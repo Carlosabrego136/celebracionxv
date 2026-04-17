@@ -412,33 +412,60 @@
       z-index: 4;
       max-width: 860px;
       width: 100%;
-      padding: 4.5rem 2rem 6rem;
+      padding: 4rem 2rem 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
+      /* ocupa todo el alto para empujar la fecha abajo */
+      min-height: 100vh;
+      justify-content: space-between;
+    }
+
+    /* bloque superior: bendición + invite */
+    .sec1-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    /* bloque inferior: fecha en la zona oscura */
+    .sec1-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      padding-bottom: 4.5rem;
+      width: 100%;
     }
 
     .sec1-blessing {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.4rem, 6.5vw, 4.8rem);
+      font-size: clamp(2.6rem, 7vw, 5rem);
       color: var(--white);
       line-height: 1.25;
       font-weight: 400;
       text-shadow:
-        0 0 50px rgba(201, 168, 76, 0.5),
-        0 2px 20px rgba(0, 0, 0, 0.8);
+        0 0 60px rgba(201, 168, 76, 0.55),
+        0 2px 22px rgba(0, 0, 0, 0.95),
+        -1px -1px 0 rgba(0, 0, 0, 0.6),
+        1px -1px 0 rgba(0, 0, 0, 0.6),
+        -1px 1px 0 rgba(0, 0, 0, 0.6),
+        1px 1px 0 rgba(0, 0, 0, 0.6);
       letter-spacing: 0.01em;
     }
 
     .sec1-invite {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.95rem, 2.3vw, 1.3rem);
+      font-size: clamp(0.95rem, 2.4vw, 1.3rem);
       font-style: italic;
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.92);
       line-height: 2;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+      text-shadow:
+        0 1px 12px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(0, 0, 0, 0.7);
       max-width: 600px;
       letter-spacing: 0.02em;
     }
@@ -446,23 +473,32 @@
     .sec1-invite em {
       font-style: normal;
       color: var(--gold-light);
-      font-weight: 300;
+      font-weight: 400;
+      text-shadow: 0 0 20px rgba(201, 168, 76, 0.6), 0 1px 12px rgba(0, 0, 0, 0.9);
     }
 
-    /* fecha elegante estilo arco/cinta */
+    /* fecha elegante en zona oscura */
     .sec1-date-elegant {
       display: flex;
       align-items: center;
       gap: 0;
       position: relative;
-      margin-top: 0.5rem;
+      margin-top: 0;
+      background: rgba(5, 10, 28, 0.5);
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      border-radius: 2px;
+      backdrop-filter: blur(14px);
+      padding: 0.3rem 0;
+      box-shadow:
+        0 0 0 1px rgba(201, 168, 76, 0.08),
+        0 4px 28px rgba(0, 0, 0, 0.5);
     }
 
     .sec1-date-elegant .sec1-date-piece {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 2rem;
+      padding: 0.8rem 1.6rem;
       position: relative;
     }
 
@@ -475,36 +511,40 @@
       width: 1px;
       background: linear-gradient(to bottom,
           transparent,
-          rgba(201, 168, 76, 0.6) 30%,
-          rgba(201, 168, 76, 0.6) 70%,
+          rgba(201, 168, 76, 0.5) 30%,
+          rgba(201, 168, 76, 0.5) 70%,
           transparent);
     }
 
     .sec1-date-elegant .sec1-date-piece .d-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 5.5vw, 3.2rem);
-      color: var(--gold);
+      font-size: clamp(1.9rem, 6vw, 3.5rem);
+      color: var(--gold-light);
       font-weight: 300;
       line-height: 1;
       letter-spacing: 0.04em;
+      text-shadow:
+        0 0 25px rgba(201, 168, 76, 0.8),
+        0 0 50px rgba(201, 168, 76, 0.35),
+        0 2px 10px rgba(0, 0, 0, 0.8);
     }
 
     .sec1-date-elegant .sec1-date-piece .d-lbl {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.52rem, 1.3vw, 0.68rem);
-      color: rgba(232, 213, 163, 0.7);
+      font-size: clamp(0.48rem, 1.2vw, 0.62rem);
+      color: rgba(232, 213, 163, 0.75);
       letter-spacing: 0.5em;
       text-transform: uppercase;
       font-weight: 400;
-      margin-top: 0.25rem;
+      margin-top: 0.3rem;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
     }
 
     .sec1-date-dot {
       font-family: 'Great Vibes', cursive;
-      font-size: 1.4rem;
-      color: var(--gold);
-      opacity: 0.55;
-      padding: 0 0.2rem;
+      font-size: 1.6rem;
+      color: rgba(201, 168, 76, 0.6);
+      padding: 0 0.1rem;
       align-self: center;
       line-height: 1;
     }
@@ -561,7 +601,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4rem 2rem 5rem;
+      padding: 2.2rem 2rem 3rem;
       gap: 0;
     }
 
@@ -571,7 +611,7 @@
       letter-spacing: 0.65em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.35rem;
       opacity: 0.85;
     }
 
@@ -579,7 +619,7 @@
       font-family: 'Great Vibes', cursive;
       font-size: clamp(2rem, 5.5vw, 3.5rem);
       color: var(--white);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.15rem;
       text-shadow: 0 0 35px rgba(201, 168, 76, 0.4);
       line-height: 1;
     }
@@ -588,7 +628,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      margin-bottom: 2.8rem;
+      margin-bottom: 1.6rem;
     }
 
     .countdown-subline .csl {
@@ -718,7 +758,7 @@
 
     /* ── BOTÓN CALENDARIO ── */
     .btn-calendario {
-      margin-top: 2.4rem;
+      margin-top: 1.4rem;
       display: inline-flex;
       align-items: center;
       gap: 0.7rem;
@@ -754,45 +794,56 @@
 
     /* ── CARRUSEL BEBÉ ── */
     .carousel-section {
-      margin-top: 3rem;
+      margin-top: 1.8rem;
       width: 100%;
       position: relative;
-      overflow: hidden;
     }
 
     .carousel-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.55em;
-      text-transform: uppercase;
-      color: rgba(100, 180, 255, 0.7);
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: rgba(160, 210, 255, 1);
       text-align: center;
-      margin-bottom: 1.2rem;
-      animation: carouselLabelPulse 3s ease-in-out infinite;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-shadow:
+        0 0 20px rgba(80, 160, 255, 0.9),
+        0 0 45px rgba(60, 140, 255, 0.55),
+        0 0 80px rgba(40, 120, 240, 0.25),
+        0 2px 14px rgba(0, 0, 0, 0.7);
+      animation: carouselLabelPulse 3.5s ease-in-out infinite;
+      letter-spacing: 0.02em;
     }
 
     @keyframes carouselLabelPulse {
 
       0%,
       100% {
-        opacity: 0.7;
+        text-shadow:
+          0 0 18px rgba(80, 160, 255, 0.8),
+          0 0 40px rgba(60, 140, 255, 0.4),
+          0 0 70px rgba(40, 120, 240, 0.18),
+          0 2px 14px rgba(0, 0, 0, 0.7);
       }
 
       50% {
-        opacity: 1;
-        letter-spacing: 0.6em;
+        text-shadow:
+          0 0 28px rgba(120, 190, 255, 1),
+          0 0 60px rgba(80, 160, 255, 0.65),
+          0 0 100px rgba(60, 140, 255, 0.30),
+          0 2px 14px rgba(0, 0, 0, 0.6);
       }
     }
 
     .carousel-track-wrap {
       position: relative;
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow:
-        0 0 0 1px rgba(80, 160, 255, 0.25),
-        0 0 24px rgba(60, 140, 255, 0.18),
-        0 0 60px rgba(40, 120, 240, 0.10),
-        0 12px 40px rgba(0, 0, 0, 0.5);
+        0 0 0 1.5px rgba(80, 160, 255, 0.3),
+        0 0 22px rgba(60, 140, 255, 0.22),
+        0 0 55px rgba(40, 120, 240, 0.12),
+        0 14px 45px rgba(0, 0, 0, 0.55);
       animation: carouselGlow 4s ease-in-out infinite;
     }
 
@@ -801,18 +852,18 @@
       0%,
       100% {
         box-shadow:
-          0 0 0 1px rgba(80, 160, 255, 0.2),
-          0 0 20px rgba(60, 140, 255, 0.14),
-          0 0 50px rgba(40, 120, 240, 0.08),
-          0 12px 40px rgba(0, 0, 0, 0.5);
+          0 0 0 1.5px rgba(80, 160, 255, 0.22),
+          0 0 20px rgba(60, 140, 255, 0.16),
+          0 0 50px rgba(40, 120, 240, 0.09),
+          0 14px 45px rgba(0, 0, 0, 0.55);
       }
 
       50% {
         box-shadow:
-          0 0 0 1px rgba(100, 180, 255, 0.45),
-          0 0 35px rgba(80, 160, 255, 0.30),
-          0 0 80px rgba(60, 140, 255, 0.15),
-          0 12px 40px rgba(0, 0, 0, 0.5);
+          0 0 0 1.5px rgba(120, 190, 255, 0.55),
+          0 0 38px rgba(80, 160, 255, 0.35),
+          0 0 85px rgba(60, 140, 255, 0.18),
+          0 14px 45px rgba(0, 0, 0, 0.55);
       }
     }
 
@@ -829,8 +880,9 @@
 
     .carousel-slide img {
       width: 100%;
-      height: clamp(280px, 60vw, 500px);
+      height: clamp(300px, 65vw, 480px);
       object-fit: cover;
+      object-position: center top;
       display: block;
     }
 
@@ -840,10 +892,10 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.15) 0%,
-          transparent 30%,
+          rgba(5, 10, 30, 0.08) 0%,
+          transparent 25%,
           transparent 70%,
-          rgba(5, 10, 30, 0.35) 100%);
+          rgba(5, 10, 30, 0.28) 100%);
       pointer-events: none;
     }
 
@@ -852,24 +904,25 @@
       display: flex;
       justify-content: center;
       gap: 0.45rem;
-      margin-top: 1rem;
+      margin-top: 0.9rem;
     }
 
     .carousel-dot {
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: rgba(80, 160, 255, 0.3);
-      border: 1px solid rgba(80, 160, 255, 0.4);
+      background: rgba(80, 160, 255, 0.28);
+      border: 1px solid rgba(100, 170, 255, 0.45);
       transition: all 0.3s ease;
       cursor: pointer;
     }
 
     .carousel-dot.active {
-      background: rgba(100, 180, 255, 0.9);
-      box-shadow: 0 0 8px rgba(80, 160, 255, 0.7);
-      width: 18px;
+      background: rgba(120, 190, 255, 0.95);
+      box-shadow: 0 0 8px rgba(80, 160, 255, 0.8), 0 0 16px rgba(60, 140, 255, 0.4);
+      width: 20px;
       border-radius: 3px;
+      border-color: transparent;
     }
 
     /* ── BLUE SPARKS (countdown) ── */
@@ -2119,37 +2172,46 @@
       <div class="overlay"></div>
       <div class="stars-layer"></div>
       <div class="content reveal">
-        <p class="sec1-blessing">Con la Bendici&#243;n de Dios<br>y de mis Padres</p>
-        <p class="sec1-invite">
-          <em>Fernando Garc&#237;a</em> y <em>Mar&#237;a Guadalupe Castro</em>,<br>
-          est&#225;s invitado a celebrar mis Quince A&#241;os
-        </p>
-        <div class="sec1-ornament">
-          <span class="oline"></span>
-          <span class="ostar">✦ ✦ ✦</span>
-          <span class="oline"></span>
+
+        <!-- texto arriba, sobre la foto -->
+        <div class="sec1-top">
+          <p class="sec1-blessing">Con la Bendici&#243;n de Dios<br>y de mis Padres</p>
+          <p class="sec1-invite">
+            <em>Fernando Garc&#237;a</em> y <em>Mar&#237;a Guadalupe Castro</em>,<br>
+            est&#225;s invitado a celebrar mis Quince A&#241;os
+          </p>
         </div>
-        <div class="sec1-date-elegant">
-          <div class="sec1-date-piece">
-            <span class="d-num">11</span>
-            <span class="d-lbl">D&#237;a</span>
+
+        <!-- fecha abajo, en zona oscura -->
+        <div class="sec1-bottom">
+          <div class="sec1-ornament">
+            <span class="oline"></span>
+            <span class="ostar">✦ ✦ ✦</span>
+            <span class="oline"></span>
           </div>
-          <span class="sec1-date-dot">·</span>
-          <div class="sec1-date-piece">
-            <span class="d-num">Julio</span>
-            <span class="d-lbl">Mes</span>
+          <div class="sec1-date-elegant">
+            <div class="sec1-date-piece">
+              <span class="d-num">11</span>
+              <span class="d-lbl">D&#237;a</span>
+            </div>
+            <span class="sec1-date-dot">·</span>
+            <div class="sec1-date-piece">
+              <span class="d-num">Julio</span>
+              <span class="d-lbl">Mes</span>
+            </div>
+            <span class="sec1-date-dot">·</span>
+            <div class="sec1-date-piece">
+              <span class="d-num">2026</span>
+              <span class="d-lbl">A&#241;o</span>
+            </div>
           </div>
-          <span class="sec1-date-dot">·</span>
-          <div class="sec1-date-piece">
-            <span class="d-num">2026</span>
-            <span class="d-lbl">A&#241;o</span>
+          <div class="sec1-ornament">
+            <span class="oline"></span>
+            <span class="ostar">✦</span>
+            <span class="oline"></span>
           </div>
         </div>
-        <div class="sec1-ornament">
-          <span class="oline"></span>
-          <span class="ostar">✦</span>
-          <span class="oline"></span>
-        </div>
+
       </div>
     </section>
 

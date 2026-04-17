@@ -369,107 +369,166 @@
 
     /* ── SEC 1: BENDICION ── */
     #sec-bendicion {
-      min-height: 85vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start;
       text-align: center;
-      padding: 3.5rem 2rem 5rem;
+      padding: 0;
+      position: relative;
     }
 
     #sec-bendicion .bg {
       background-image: url('foto3.jpg');
+      background-position: center 20%;
     }
 
     #sec-bendicion .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.45) 0%,
-          rgba(5, 10, 30, 0.15) 25%,
-          rgba(5, 10, 30, 0.10) 60%,
-          rgba(5, 10, 30, 0.75) 100%);
+          rgba(5, 10, 30, 0.55) 0%,
+          rgba(5, 10, 30, 0.18) 18%,
+          rgba(5, 10, 30, 0.05) 42%,
+          rgba(5, 10, 30, 0.08) 58%,
+          rgba(5, 10, 30, 0.55) 78%,
+          rgba(10, 22, 58, 0.92) 100%);
+    }
+
+    /* degradado inferior que mezcla con la siguiente sección */
+    #sec-bendicion::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, transparent, var(--navy));
+      z-index: 3;
+      pointer-events: none;
     }
 
     #sec-bendicion .content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       max-width: 860px;
+      width: 100%;
+      padding: 4.5rem 2rem 6rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.8rem;
+      gap: 1.5rem;
     }
 
     .sec1-blessing {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.8rem, 7.5vw, 5.5rem);
+      font-size: clamp(2.4rem, 6.5vw, 4.8rem);
       color: var(--white);
-      line-height: 1.3;
-      text-shadow: 0 0 40px rgba(201, 168, 76, 0.45), 0 3px 18px rgba(0, 0, 0, 0.75);
+      line-height: 1.25;
+      font-weight: 400;
+      text-shadow:
+        0 0 50px rgba(201, 168, 76, 0.5),
+        0 2px 20px rgba(0, 0, 0, 0.8);
+      letter-spacing: 0.01em;
     }
 
     .sec1-invite {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+      font-size: clamp(0.95rem, 2.3vw, 1.3rem);
       font-style: italic;
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.90);
-      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 2;
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
-      max-width: 680px;
+      max-width: 600px;
+      letter-spacing: 0.02em;
     }
 
     .sec1-invite em {
       font-style: normal;
       color: var(--gold-light);
-      font-weight: 400;
+      font-weight: 300;
     }
 
-    .sec1-date-row {
+    /* fecha elegante estilo arco/cinta */
+    .sec1-date-elegant {
       display: flex;
       align-items: center;
       gap: 0;
-      background: rgba(10, 18, 40, 0.55);
-      border: 1px solid rgba(201, 168, 76, 0.35);
-      backdrop-filter: blur(12px);
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.12);
+      position: relative;
+      margin-top: 0.5rem;
     }
 
-    .sec1-date-cell {
-      padding: 1rem 1.8rem;
-      text-align: center;
+    .sec1-date-elegant .sec1-date-piece {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 2rem;
       position: relative;
     }
 
-    .sec1-date-cell+.sec1-date-cell::before {
+    .sec1-date-elegant .sec1-date-piece+.sec1-date-piece::before {
       content: '';
       position: absolute;
       left: 0;
-      top: 20%;
-      height: 60%;
+      top: 15%;
+      height: 70%;
       width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5), transparent);
+      background: linear-gradient(to bottom,
+          transparent,
+          rgba(201, 168, 76, 0.6) 30%,
+          rgba(201, 168, 76, 0.6) 70%,
+          transparent);
     }
 
-    .sec1-date-cell .num {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 6vw, 3.8rem);
-      color: var(--gold);
-      line-height: 1;
-      font-weight: 600;
-      display: block;
-    }
-
-    .sec1-date-cell .lbl {
+    .sec1-date-elegant .sec1-date-piece .d-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
-      color: var(--gold-light);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
+      font-size: clamp(1.8rem, 5.5vw, 3.2rem);
+      color: var(--gold);
       font-weight: 300;
-      display: block;
-      margin-top: 0.2rem;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+
+    .sec1-date-elegant .sec1-date-piece .d-lbl {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.52rem, 1.3vw, 0.68rem);
+      color: rgba(232, 213, 163, 0.7);
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-top: 0.25rem;
+    }
+
+    .sec1-date-dot {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.4rem;
+      color: var(--gold);
+      opacity: 0.55;
+      padding: 0 0.2rem;
+      align-self: center;
+      line-height: 1;
+    }
+
+    /* línea ornamental sobre/bajo la fecha */
+    .sec1-ornament {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .sec1-ornament .oline {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.5), transparent);
+    }
+
+    .sec1-ornament .ostar {
+      font-size: 0.55rem;
+      color: var(--gold);
+      opacity: 0.8;
+      letter-spacing: 0.3em;
     }
 
     /* ── SEC 2: COUNTDOWN ── */
@@ -477,6 +536,7 @@
       min-height: 70vh;
       display: flex;
       align-items: stretch;
+      background: var(--navy);
     }
 
     #sec-countdown .bg {
@@ -485,29 +545,73 @@
 
     #sec-countdown .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.75) 0%,
-          rgba(5, 10, 30, 0.15) 25%,
-          rgba(5, 10, 30, 0.15) 75%,
-          rgba(5, 10, 30, 0.55) 100%);
+          rgba(5, 10, 30, 0.82) 0%,
+          rgba(5, 10, 30, 0.40) 25%,
+          rgba(5, 10, 30, 0.40) 75%,
+          rgba(5, 10, 30, 0.82) 100%);
     }
 
     #sec-countdown .inner {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 580px;
+      max-width: 700px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 3.5rem 2rem;
+      padding: 4rem 2rem 5rem;
       gap: 0;
+    }
+
+    .countdown-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.52rem, 1.3vw, 0.65rem);
+      letter-spacing: 0.65em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      opacity: 0.85;
+    }
+
+    .countdown-heading {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 5.5vw, 3.5rem);
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      text-shadow: 0 0 35px rgba(201, 168, 76, 0.4);
+      line-height: 1;
+    }
+
+    .countdown-subline {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .countdown-subline .csl {
+      width: 55px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.55));
+    }
+
+    .countdown-subline .csl.r {
+      background: linear-gradient(to left, transparent, rgba(201, 168, 76, 0.55));
+    }
+
+    .countdown-subline .csd {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.7;
     }
 
     .countdown-boxes {
       display: flex;
-      gap: clamp(0.5rem, 2vw, 1.2rem);
+      gap: clamp(0.4rem, 2vw, 1.4rem);
       flex-wrap: nowrap;
       justify-content: center;
       align-items: flex-end;
@@ -517,43 +621,61 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.6rem;
       cursor: default;
     }
 
     .cd-num {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(3rem, 9vw, 6.5rem);
-      font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 8.5vw, 6rem);
+      font-weight: 300;
       color: var(--white);
       line-height: 1;
-      min-width: clamp(88px, 16vw, 148px);
+      min-width: clamp(80px, 14vw, 130px);
       text-align: center;
-      background: rgba(8, 16, 36, 0.55);
-      border: 1px solid rgba(201, 168, 76, 0.32);
-      padding: 0.7rem 0.4rem 0.55rem;
-      backdrop-filter: blur(14px);
+      background: rgba(8, 18, 44, 0.45);
+      border: 1px solid rgba(201, 168, 76, 0.22);
+      border-radius: 12px;
+      padding: 1rem 0.5rem 0.8rem;
+      backdrop-filter: blur(18px);
       box-shadow:
-        0 4px 24px rgba(201, 168, 76, 0.10),
-        inset 0 1px 0 rgba(201, 168, 76, 0.08);
-      transition: box-shadow 0.35s ease, border-color 0.35s ease, color 0.35s ease;
-      text-shadow: 0 0 35px rgba(201, 168, 76, 0.25);
+        0 2px 20px rgba(201, 168, 76, 0.08),
+        0 0 0 1px rgba(201, 168, 76, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition: box-shadow 0.35s ease, border-color 0.35s ease;
+      text-shadow: 0 0 30px rgba(201, 168, 76, 0.2), 0 2px 8px rgba(0, 0, 0, 0.6);
       position: relative;
       overflow: hidden;
+      letter-spacing: 0.03em;
+    }
+
+    .cd-num::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent);
+      border-radius: 12px 12px 0 0;
+      pointer-events: none;
     }
 
     .cd-num::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(201, 168, 76, 0.06) 0%, transparent 50%);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.35), transparent);
       pointer-events: none;
     }
 
     .cd-box:hover .cd-num {
       color: var(--gold-light);
-      border-color: rgba(201, 168, 76, 0.75);
-      box-shadow: 0 0 32px rgba(201, 168, 76, 0.28), inset 0 1px 0 rgba(201, 168, 76, 0.15);
+      border-color: rgba(201, 168, 76, 0.5);
+      box-shadow: 0 0 28px rgba(201, 168, 76, 0.2), inset 0 1px 0 rgba(201, 168, 76, 0.08);
     }
 
     .cd-num.flip {
@@ -578,21 +700,176 @@
 
     .cd-unit {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.52rem, 1.2vw, 0.72rem);
-      letter-spacing: 0.45em;
+      font-size: clamp(0.46rem, 1.1vw, 0.62rem);
+      letter-spacing: 0.5em;
       text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.85;
+      color: rgba(201, 168, 76, 0.7);
     }
 
     .countdown-divider {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 5vw, 4rem);
-      color: var(--gold);
-      padding-bottom: clamp(1.6rem, 4vw, 2.6rem);
-      opacity: 0.4;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      color: rgba(201, 168, 76, 0.3);
+      padding-bottom: clamp(1.8rem, 4.5vw, 3rem);
       flex-shrink: 0;
       line-height: 1;
+      font-weight: 300;
+    }
+
+    /* ── BOTÓN CALENDARIO ── */
+    .btn-calendario {
+      margin-top: 2.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.75rem 2.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(8, 18, 44, 0.5);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 50px;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      text-decoration: none;
+      transition: all 0.35s ease;
+      box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-calendario:hover {
+      color: var(--white);
+      border-color: rgba(201, 168, 76, 0.7);
+      background: rgba(201, 168, 76, 0.1);
+      box-shadow: 0 4px 24px rgba(201, 168, 76, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-calendario svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.8;
+    }
+
+    /* ── CARRUSEL BEBÉ ── */
+    .carousel-section {
+      margin-top: 3rem;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: rgba(100, 180, 255, 0.7);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      animation: carouselLabelPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes carouselLabelPulse {
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 1;
+        letter-spacing: 0.6em;
+      }
+    }
+
+    .carousel-track-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(80, 160, 255, 0.25),
+        0 0 24px rgba(60, 140, 255, 0.18),
+        0 0 60px rgba(40, 120, 240, 0.10),
+        0 12px 40px rgba(0, 0, 0, 0.5);
+      animation: carouselGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes carouselGlow {
+
+      0%,
+      100% {
+        box-shadow:
+          0 0 0 1px rgba(80, 160, 255, 0.2),
+          0 0 20px rgba(60, 140, 255, 0.14),
+          0 0 50px rgba(40, 120, 240, 0.08),
+          0 12px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      50% {
+        box-shadow:
+          0 0 0 1px rgba(100, 180, 255, 0.45),
+          0 0 35px rgba(80, 160, 255, 0.30),
+          0 0 80px rgba(60, 140, 255, 0.15),
+          0 12px 40px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: clamp(280px, 60vw, 500px);
+      object-fit: cover;
+      display: block;
+    }
+
+    /* degradado suave en slides */
+    .carousel-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+          rgba(5, 10, 30, 0.15) 0%,
+          transparent 30%,
+          transparent 70%,
+          rgba(5, 10, 30, 0.35) 100%);
+      pointer-events: none;
+    }
+
+    /* indicadores */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.45rem;
+      margin-top: 1rem;
+    }
+
+    .carousel-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(80, 160, 255, 0.3);
+      border: 1px solid rgba(80, 160, 255, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: rgba(100, 180, 255, 0.9);
+      box-shadow: 0 0 8px rgba(80, 160, 255, 0.7);
+      width: 18px;
+      border-radius: 3px;
     }
 
     /* ── BLUE SPARKS (countdown) ── */
@@ -691,7 +968,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 3rem 2rem;
+      padding: 4.5rem 2rem 0;
+      position: relative;
     }
 
     #sec-photo1 .bg {
@@ -702,8 +980,22 @@
       background: linear-gradient(180deg,
           rgba(5, 10, 30, 0.50) 0%,
           rgba(5, 10, 30, 0.10) 18%,
-          rgba(5, 10, 30, 0.10) 82%,
-          rgba(5, 10, 30, 0.50) 100%);
+          rgba(5, 10, 30, 0.10) 72%,
+          rgba(5, 10, 30, 0.70) 88%,
+          var(--navy) 100%);
+    }
+
+    /* degradado extra para que fluya con la siguiente sección */
+    #sec-photo1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      background: linear-gradient(to bottom, transparent, var(--navy));
+      z-index: 3;
+      pointer-events: none;
     }
 
     #sec-photo1 .inner {
@@ -712,6 +1004,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-bottom: 5rem;
     }
 
     /* ── PHOTO FRAME — gallery style ── */
@@ -1831,19 +2124,31 @@
           <em>Fernando Garc&#237;a</em> y <em>Mar&#237;a Guadalupe Castro</em>,<br>
           est&#225;s invitado a celebrar mis Quince A&#241;os
         </p>
-        <div class="sec1-date-row">
-          <div class="sec1-date-cell">
-            <span class="num">11</span>
-            <span class="lbl">D&#237;a</span>
+        <div class="sec1-ornament">
+          <span class="oline"></span>
+          <span class="ostar">✦ ✦ ✦</span>
+          <span class="oline"></span>
+        </div>
+        <div class="sec1-date-elegant">
+          <div class="sec1-date-piece">
+            <span class="d-num">11</span>
+            <span class="d-lbl">D&#237;a</span>
           </div>
-          <div class="sec1-date-cell">
-            <span class="num">Julio</span>
-            <span class="lbl">Mes</span>
+          <span class="sec1-date-dot">·</span>
+          <div class="sec1-date-piece">
+            <span class="d-num">Julio</span>
+            <span class="d-lbl">Mes</span>
           </div>
-          <div class="sec1-date-cell">
-            <span class="num">2026</span>
-            <span class="lbl">A&#241;o</span>
+          <span class="sec1-date-dot">·</span>
+          <div class="sec1-date-piece">
+            <span class="d-num">2026</span>
+            <span class="d-lbl">A&#241;o</span>
           </div>
+        </div>
+        <div class="sec1-ornament">
+          <span class="oline"></span>
+          <span class="ostar">✦</span>
+          <span class="oline"></span>
         </div>
       </div>
     </section>
@@ -1857,6 +2162,13 @@
 
       <div class="inner">
         <div class="countdown-wrap reveal">
+          <p class="countdown-eyebrow">✦ &nbsp; Faltan &nbsp; ✦</p>
+          <h2 class="countdown-heading">Para mi Gran D&#237;a</h2>
+          <div class="countdown-subline">
+            <span class="csl"></span>
+            <span class="csd"></span>
+            <span class="csl r"></span>
+          </div>
           <div class="countdown-boxes">
             <div class="cd-box">
               <div class="cd-num" id="cd-days">000</div>
@@ -1878,6 +2190,40 @@
               <div class="cd-unit">Segundos</div>
             </div>
           </div>
+
+          <!-- Botón calendario -->
+          <a class="btn-calendario"
+            href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260711T140000%0ADTEND:20260711T230000%0ASUMMARY:XV%20A%C3%B1os%20Kimberly%20Garc%C3%ADa%20Castro%0ADESCRIPTION:Ceremonia%20y%20recepci%C3%B3n%0ALOCATION:South%20Gate%2C%20CA%0AEND:VEVENT%0AEND:VCALENDAR"
+            download="xv-kimberly.ics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="3" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+            Agendar en Calendario
+          </a>
+
+          <!-- Carrusel bebé -->
+          <div class="carousel-section">
+            <p class="carousel-label">✦ &nbsp; Mis primeros recuerdos &nbsp; ✦</p>
+            <div class="carousel-track-wrap">
+              <div class="carousel-track" id="baby-track">
+                <div class="carousel-slide"><img src="baby1.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby2.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby3.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby4.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby5.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby6.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby7.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby8.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby9.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby10.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+                <div class="carousel-slide"><img src="baby11.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
+              </div>
+            </div>
+            <div class="carousel-dots" id="baby-dots"></div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -2436,7 +2782,36 @@
       document.getElementById('form-success').style.display = 'block';
       }
       
-      /* ANIMACIÓN NOMBRE LETRA POR LETRA */
+      /* CARRUSEL BEBÉ */
+    (function initBabyCarousel() {
+      const track = document.getElementById('baby-track');
+      const dotsEl = document.getElementById('baby-dots');
+      if (!track) return;
+      const slides = track.querySelectorAll('.carousel-slide');
+      const total = slides.length;
+      let current = 0;
+
+      // crear dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+      });
+
+      function goTo(idx) {
+        current = (idx + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      // auto-play cada 3.2s
+      setInterval(() => goTo(current + 1), 3200);
+    })();
+
+    /* ANIMACIÓN NOMBRE LETRA POR LETRA */
       (function animarPortada() {
       const nameEl = document.getElementById('portada-name-el');
       const dividerEl = document.getElementById('portada-divider-el');

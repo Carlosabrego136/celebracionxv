@@ -98,93 +98,143 @@
       gap: 1rem;
     }
 
+    /* ── PORTADA NUEVA ── */
     .portada-sub {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.65rem, 1.8vw, 0.9rem);
-      letter-spacing: 0.55em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      font-weight: 400;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
-      animation: fadeSlideDown 1s ease both;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.6rem, 1.6vw, 0.85rem);
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeSlideDown 1s ease 0.3s both;
     }
-
+    
+    /* Nombre animado letra por letra */
     .portada-name {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(3.5rem, 11vw, 8rem);
-      color: var(--white);
-      text-shadow:
-        0 0 50px rgba(201, 168, 76, 0.5),
-        0 3px 24px rgba(0, 0, 0, 0.9);
-      line-height: 1.05;
-      animation: fadeSlideDown 1.3s ease both;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3.8rem, 12vw, 9rem);
+    color: var(--white);
+    line-height: 1.05;
+    text-shadow:
+    0 0 60px rgba(201, 168, 76, 0.6),
+    0 4px 28px rgba(0, 0, 0, 0.95);
+    display: block;
     }
-
+    
+    .portada-name .letra {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px) scale(0.85);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .portada-name .letra.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    }
+    
+    /* Línea divisora */
     .portada-divider {
-      width: 200px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      position: relative;
-      animation: fadeIn 1.6s ease both;
+    width: 0px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    position: relative;
+    transition: width 1.2s ease 0.5s;
     }
-
+    
+    .portada-divider.grow {
+    width: 220px;
+    }
+    
     .portada-divider::before {
-      content: '✦';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      color: var(--gold);
-      font-size: 0.75rem;
-      background: transparent;
+    content: '✦';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--gold);
+    font-size: 0.75rem;
+    background: transparent;
     }
-
+    
+    /* Fecha */
     .portada-date {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.9rem, 2.5vw, 1.3rem);
-      color: var(--gold-light);
-      letter-spacing: 0.3em;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
-      animation: fadeSlideUp 1.7s ease both;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.85rem, 2.2vw, 1.15rem);
+    color: var(--gold-light);
+    letter-spacing: 0.4em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 2.8s both;
     }
-
+    
+    /* ── BOTÓN NUEVO ── */
     .btn-entrar {
-      margin-top: 0.6rem;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 1.4rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      color: var(--navy);
-      background: linear-gradient(135deg, #e8d5a3 0%, #c9a84c 50%, #e8d5a3 100%);
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 3px 16px rgba(201, 168, 76, 0.5);
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-      animation: fadeSlideUp 2s ease both;
+    margin-top: 1rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.75rem 2.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: transparent;
+    border: 1px solid rgba(201, 168, 76, 0.5);
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s ease 3.4s both;
+    transition: color 0.4s ease, border-color 0.4s ease;
     }
-
+    
+    /* Relleno que entra de izquierda a derecha al hover */
     .btn-entrar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, transparent 55%);
-      opacity: 0;
-      transition: opacity 0.3s;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(201,168,76,0.18) 0%, rgba(201,168,76,0.08) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.45s ease;
     }
-
+    
+    /* Líneas decorativas izq y der */
+    .btn-entrar::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    pointer-events: none;
+    transition: border-color 0.4s ease;
+    }
+    
     .btn-entrar:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 6px 28px rgba(201, 168, 76, 0.7);
+    color: var(--white);
+    border-color: rgba(201, 168, 76, 0.9);
+    box-shadow: 0 0 28px rgba(201, 168, 76, 0.25), inset 0 0 20px rgba(201,168,76,0.06);
     }
-
+    
     .btn-entrar:hover::before {
-      opacity: 1;
+    transform: translateX(0);
+    }
+    
+    .btn-entrar:hover::after {
+    border-color: rgba(201, 168, 76, 0.45);
+    }
+    
+    .btn-entrar .btn-icon {
+    font-size: 0.55rem;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.3s;
+    }
+    
+    .btn-entrar:hover .btn-icon {
+    opacity: 1;
+    transform: scale(1.3);
     }
 
     /* ── AUDIO BUTTON ── */
@@ -1368,12 +1418,14 @@
     <div class="overlay"></div>
     <div class="stars-layer"></div>
     <div class="content">
-      <p class="portada-sub">Una noche m&#225;gica &nbsp;&#183;&nbsp; XV A&#241;os</p>
-      <h1 class="portada-name">Kimberly<br>Garc&#237;a Castro</h1>
-      <div class="portada-divider"></div>
-      <p class="portada-date">11 &nbsp;&#183;&nbsp; Julio &nbsp;&#183;&nbsp; 2026</p>
-      <button class="btn-entrar" onclick="entrarAlSitio()">
-        &#10022; &nbsp;Entrar&nbsp; &#10022;
+      <p class="portada-sub">Una noche mágica &nbsp;·&nbsp; XV Años</p>
+      <h1 class="portada-name" id="portada-name-el">Kimberly<br>García Castro</h1>
+      <div class="portada-divider" id="portada-divider-el"></div>
+      <p class="portada-date">11 &nbsp;·&nbsp; Julio &nbsp;·&nbsp; 2026</p>
+      <button class="btn-entrar" id="btn-entrar-el" onclick="entrarAlSitio()">
+        <span class="btn-icon">✦</span>
+        <span>Entrar</span>
+        <span class="btn-icon">✦</span>
       </button>
     </div>
   </section>
@@ -1797,17 +1849,43 @@
         return;
       }
       const text = encodeURIComponent(
-        '&#127800; *XV A\u00f1os de Kimberly Garc\u00eda Castro*\n' +
-        '&#128197; 11 de Julio 2026\n\n' +
-        '*Nombre:* ' + nombre + '\n' +
-        '*Personas:* ' + personas + '\n' +
-        '*Asistencia:* ' + confirma + '\n' +
-        (mensaje ? '*Mensaje:* ' + mensaje : '')
+      '🌸 *XV Años de Kimberly García Castro*\n' +
+      '📅 11 de Julio 2026\n\n' +
+      '*Nombre:* ' + nombre + '\n' +
+      '*Personas:* ' + personas + '\n' +
+      '*Asistencia:* ' + confirma + '\n' +
+      (mensaje ? '*Mensaje:* ' + mensaje : '')
       );
       window.open('https://wa.me/13236130020?text=' + text, '_blank');
       document.getElementById('form-success').style.display = 'block';
-    }
-  </script>
-</body>
-
-</html>
+      }
+      
+      /* ANIMACIÓN NOMBRE LETRA POR LETRA */
+      (function animarPortada() {
+      const nameEl = document.getElementById('portada-name-el');
+      const dividerEl = document.getElementById('portada-divider-el');
+      if (!nameEl) return;
+      
+      nameEl.innerHTML = nameEl.innerHTML.replace(/(<br\s*\ /?>)|([^\s<]) /g, (m, br, char)=> {
+          if (br) return '<br>';
+              return `<span class="letra">${char}</span>`;
+          });
+      
+          const letras = nameEl.querySelectorAll('.letra');
+          let delay = 500;
+      
+          letras.forEach((l, i) => {
+          setTimeout(() => {
+          l.classList.add('visible');
+          if (i === letras.length - 1) {
+          setTimeout(() => dividerEl.classList.add('grow'), 300);
+          }
+          }, delay);
+          delay += 65;
+          });
+          })();
+      
+          </script>
+          </body>
+      
+          </html>

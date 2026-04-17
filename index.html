@@ -394,15 +394,19 @@
           rgba(10, 22, 58, 0.92) 100%);
     }
 
-    /* degradado inferior que mezcla con la siguiente sección */
+    /* degradado inferior más alto y suave */
     #sec-bendicion::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 220px;
-      background: linear-gradient(to bottom, transparent, var(--navy));
+      height: 380px;
+      background: linear-gradient(to bottom,
+          transparent 0%,
+          rgba(10, 22, 40, 0.3) 40%,
+          rgba(10, 22, 40, 0.75) 70%,
+          var(--navy) 100%);
       z-index: 3;
       pointer-events: none;
     }
@@ -625,10 +629,12 @@
 
     #sec-countdown .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.82) 0%,
-          rgba(5, 10, 30, 0.40) 25%,
-          rgba(5, 10, 30, 0.40) 75%,
-          rgba(5, 10, 30, 0.82) 100%);
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.55) 8%,
+          rgba(5, 10, 30, 0.30) 25%,
+          rgba(5, 10, 30, 0.30) 75%,
+          rgba(5, 10, 30, 0.55) 92%,
+          var(--navy) 100%);
     }
 
     #sec-countdown .inner {
@@ -1084,22 +1090,27 @@
 
     #sec-photo1 .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.50) 0%,
-          rgba(5, 10, 30, 0.10) 18%,
-          rgba(5, 10, 30, 0.10) 72%,
-          rgba(5, 10, 30, 0.70) 88%,
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.35) 10%,
+          rgba(5, 10, 30, 0.08) 30%,
+          rgba(5, 10, 30, 0.08) 70%,
+          rgba(5, 10, 30, 0.35) 90%,
           var(--navy) 100%);
     }
 
-    /* degradado extra para que fluya con la siguiente sección */
+    /* degradado extra suave */
     #sec-photo1::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 160px;
-      background: linear-gradient(to bottom, transparent, var(--navy));
+      height: 320px;
+      background: linear-gradient(to bottom,
+          transparent 0%,
+          rgba(10, 22, 40, 0.25) 45%,
+          rgba(10, 22, 40, 0.7) 72%,
+          var(--navy) 100%);
       z-index: 3;
       pointer-events: none;
     }
@@ -1357,10 +1368,12 @@
 
     #sec-collage .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.52) 0%,
-          rgba(5, 10, 30, 0.12) 18%,
-          rgba(5, 10, 30, 0.12) 82%,
-          rgba(5, 10, 30, 0.52) 100%);
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.38) 10%,
+          rgba(5, 10, 30, 0.10) 22%,
+          rgba(5, 10, 30, 0.10) 78%,
+          rgba(5, 10, 30, 0.38) 90%,
+          var(--navy) 100%);
     }
 
     #sec-collage .inner {
@@ -1484,10 +1497,12 @@
 
     #sec-padrinos .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.55) 0%,
-          rgba(5, 10, 30, 0.20) 25%,
-          rgba(5, 10, 30, 0.20) 75%,
-          rgba(5, 10, 30, 0.55) 100%);
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.38) 10%,
+          rgba(5, 10, 30, 0.15) 25%,
+          rgba(5, 10, 30, 0.15) 75%,
+          rgba(5, 10, 30, 0.38) 90%,
+          var(--navy) 100%);
     }
 
     #sec-padrinos .inner {
@@ -1570,10 +1585,12 @@
 
     #sec-photo2 .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.52) 0%,
-          rgba(5, 10, 30, 0.10) 20%,
-          rgba(5, 10, 30, 0.10) 80%,
-          rgba(5, 10, 30, 0.52) 100%);
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.35) 10%,
+          rgba(5, 10, 30, 0.08) 25%,
+          rgba(5, 10, 30, 0.08) 75%,
+          rgba(5, 10, 30, 0.35) 90%,
+          var(--navy) 100%);
     }
 
     #sec-photo2 .inner {
@@ -1599,10 +1616,12 @@
 
     #sec-ubicacion .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.55) 0%,
-          rgba(5, 10, 30, 0.22) 20%,
-          rgba(5, 10, 30, 0.22) 80%,
-          rgba(5, 10, 30, 0.55) 100%);
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.40) 10%,
+          rgba(5, 10, 30, 0.18) 22%,
+          rgba(5, 10, 30, 0.18) 78%,
+          rgba(5, 10, 30, 0.40) 90%,
+          var(--navy) 100%);
     }
 
     #sec-ubicacion .inner {
@@ -2016,10 +2035,12 @@
 
     #sec-asistencia .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.58) 0%,
-          rgba(5, 10, 30, 0.25) 20%,
-          rgba(5, 10, 30, 0.25) 80%,
-          rgba(5, 10, 30, 0.58) 100%);
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.42) 10%,
+          rgba(5, 10, 30, 0.20) 22%,
+          rgba(5, 10, 30, 0.20) 78%,
+          rgba(5, 10, 30, 0.42) 90%,
+          var(--navy) 100%);
     }
 
     #sec-asistencia .inner {
@@ -2112,10 +2133,12 @@
 
     #sec-regalo .overlay {
       background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.52) 0%,
-          rgba(5, 10, 30, 0.15) 20%,
-          rgba(5, 10, 30, 0.15) 80%,
-          rgba(5, 10, 30, 0.52) 100%);
+          var(--navy) 0%,
+          rgba(5, 10, 30, 0.38) 10%,
+          rgba(5, 10, 30, 0.12) 22%,
+          rgba(5, 10, 30, 0.12) 78%,
+          rgba(5, 10, 30, 0.38) 90%,
+          var(--navy) 100%);
     }
 
     #sec-regalo .inner {
@@ -2250,11 +2273,12 @@
       background:
         radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201, 168, 76, 0.04) 0%, transparent 65%),
         linear-gradient(180deg,
-          rgba(4, 10, 24, 0.80) 0%,
-          rgba(4, 10, 24, 0.42) 12%,
-          rgba(4, 10, 24, 0.30) 45%,
-          rgba(4, 10, 24, 0.42) 88%,
-          rgba(4, 10, 24, 0.82) 100%);
+          var(--navy) 0%,
+          rgba(4, 10, 24, 0.55) 8%,
+          rgba(4, 10, 24, 0.28) 22%,
+          rgba(4, 10, 24, 0.28) 78%,
+          rgba(4, 10, 24, 0.55) 92%,
+          var(--navy) 100%);
     }
 
     #sec-itinerario .inner {
@@ -2674,7 +2698,7 @@
         <div class="sec1-bottom">
           <p class="sec1-invite">
             <em>Fernando Garc&#237;a</em> y <em>Mar&#237;a Guadalupe Castro</em>,<br>
-            est&#225;s invitado a celebrar mis Quince A&#241;os
+            est&#225;s invitado a celebrar mis XV A&#241;os
           </p>
           <div class="sec1-date-elegant">
             <div class="sec1-date-piece">
@@ -2752,13 +2776,13 @@
             <p class="carousel-label">Mis primeros recuerdos</p>
             <div class="carousel-track-wrap">
               <div class="carousel-track" id="baby-track">
+                <div class="carousel-slide"><img src="baby9.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby1.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby2.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby3.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby4.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby5.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby6.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
-                <div class="carousel-slide"><img src="baby9.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby10.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby11.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
               </div>
@@ -3417,8 +3441,70 @@
         });
       }
 
-      // auto-play cada 8s
-      setInterval(() => goTo(current + 1), 8000);
+      // Sin autoplay — manual únicamente
+
+      // ── Swipe táctil fluido ──
+      const wrap = track.parentElement;
+      let startX = 0, startY = 0, dragging = false, moved = false;
+
+      wrap.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        dragging = true;
+        moved = false;
+        track.style.transition = 'none';
+      }, { passive: true });
+
+      wrap.addEventListener('touchmove', (e) => {
+        if (!dragging) return;
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        if (!moved && Math.abs(dy) > Math.abs(dx)) { dragging = false; return; }
+        moved = true;
+        e.preventDefault();
+        const base = -(current * 100);
+        const pct = (dx / wrap.offsetWidth) * 100;
+        track.style.transform = `translateX(calc(${base}% + ${dx}px))`;
+      }, { passive: false });
+
+      wrap.addEventListener('touchend', (e) => {
+        if (!dragging) return;
+        dragging = false;
+        const dx = e.changedTouches[0].clientX - startX;
+        track.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        if (Math.abs(dx) > 40) {
+          goTo(dx < 0 ? current + 1 : current - 1);
+        } else {
+          track.style.transform = `translateX(-${current * 100}%)`;
+        }
+      }, { passive: true });
+
+      // ── Drag con mouse (desktop) ──
+      wrap.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        dragging = true;
+        moved = false;
+        track.style.transition = 'none';
+        wrap.style.cursor = 'grabbing';
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!dragging) return;
+        moved = true;
+        const dx = e.clientX - startX;
+        track.style.transform = `translateX(calc(-${current * 100}% + ${dx}px))`;
+      });
+      window.addEventListener('mouseup', (e) => {
+        if (!dragging) return;
+        dragging = false;
+        wrap.style.cursor = '';
+        const dx = e.clientX - startX;
+        track.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        if (Math.abs(dx) > 40) {
+          goTo(dx < 0 ? current + 1 : current - 1);
+        } else {
+          track.style.transform = `translateX(-${current * 100}%)`;
+        }
+      });
     })();
 
     /* ESTRELLAS ZONA NEGRA */

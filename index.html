@@ -458,33 +458,31 @@
 
     .sec1-invite {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.25rem, 3.2vw, 1.75rem);
+      font-size: clamp(1.1rem, 2.8vw, 1.5rem);
       font-style: italic;
-      font-weight: 400;
+      font-weight: 300;
       color: rgba(255, 255, 255, 0.97);
-      line-height: 1.9;
-      text-shadow:
-        -1.5px -1.5px 0 rgba(0, 0, 0, 0.95),
-        1.5px -1.5px 0 rgba(0, 0, 0, 0.95),
-        -1.5px 1.5px 0 rgba(0, 0, 0, 0.95),
-        1.5px 1.5px 0 rgba(0, 0, 0, 0.95),
-        0 0 18px rgba(0, 0, 0, 0.9),
-        0 3px 20px rgba(0, 0, 0, 0.85);
-      max-width: 620px;
-      letter-spacing: 0.02em;
+      line-height: 2.1;
+      max-width: 600px;
+      letter-spacing: 0.03em;
+      position: relative;
+      padding: 1.2rem 2rem;
+      background: rgba(4, 8, 24, 0.52);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(201, 168, 76, 0.22);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.22);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+      width: 100%;
+      text-align: center;
     }
 
     .sec1-invite em {
       font-style: normal;
       color: var(--gold-light);
-      font-weight: 500;
+      font-weight: 400;
       text-shadow:
-        -1.5px -1.5px 0 rgba(0, 0, 0, 0.95),
-        1.5px -1.5px 0 rgba(0, 0, 0, 0.95),
-        -1.5px 1.5px 0 rgba(0, 0, 0, 0.95),
-        1.5px 1.5px 0 rgba(0, 0, 0, 0.95),
-        0 0 22px rgba(201, 168, 76, 0.55),
-        0 2px 14px rgba(0, 0, 0, 0.9);
+        0 0 18px rgba(201, 168, 76, 0.5),
+        0 1px 10px rgba(0, 0, 0, 0.9);
     }
 
     /* fecha elegante en zona oscura */
@@ -811,17 +809,28 @@
 
     .carousel-label {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      color: rgba(160, 210, 255, 0.92);
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      color: rgba(180, 220, 255, 0.92);
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       line-height: 1.2;
+      letter-spacing: 0.01em;
       text-shadow:
-        0 0 14px rgba(80, 160, 255, 0.45),
-        0 0 32px rgba(60, 140, 255, 0.22),
-        0 2px 14px rgba(0, 0, 0, 0.75);
-      animation: carouselLabelPulse 6s ease-in-out infinite;
-      letter-spacing: 0.02em;
+        0 0 20px rgba(100, 170, 255, 0.35),
+        0 0 45px rgba(70, 145, 240, 0.15),
+        0 2px 12px rgba(0, 0, 0, 0.6);
+      animation: carouselLabelPulse 7s ease-in-out infinite;
+      position: relative;
+    }
+
+    /* línea decorativa bajo el título */
+    .carousel-label::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(140, 200, 255, 0.45), transparent);
+      margin: 0.5rem auto 0;
     }
 
     @keyframes carouselLabelPulse {
@@ -829,17 +838,17 @@
       0%,
       100% {
         text-shadow:
-          0 0 12px rgba(80, 160, 255, 0.38),
-          0 0 28px rgba(60, 140, 255, 0.18),
-          0 2px 14px rgba(0, 0, 0, 0.75);
-        opacity: 0.88;
+          0 0 16px rgba(100, 170, 255, 0.28),
+          0 0 38px rgba(70, 145, 240, 0.12),
+          0 2px 12px rgba(0, 0, 0, 0.6);
+        opacity: 0.9;
       }
 
       50% {
         text-shadow:
-          0 0 18px rgba(100, 175, 255, 0.55),
-          0 0 40px rgba(80, 160, 255, 0.28),
-          0 2px 14px rgba(0, 0, 0, 0.65);
+          0 0 22px rgba(120, 185, 255, 0.42),
+          0 0 50px rgba(90, 160, 250, 0.18),
+          0 2px 12px rgba(0, 0, 0, 0.55);
         opacity: 1;
       }
     }
@@ -890,6 +899,8 @@
       object-fit: cover;
       object-position: center top;
       display: block;
+      image-rendering: -webkit-optimize-contrast;
+      filter: contrast(1.04) saturate(1.08);
     }
 
     /* degradado suave en slides */
@@ -998,11 +1009,11 @@
       }
 
       10% {
-        opacity: 0.65;
+        opacity: 0.28;
       }
 
       85% {
-        opacity: 0.55;
+        opacity: 0.22;
       }
 
       100% {
@@ -2273,7 +2284,7 @@
 
           <!-- Carrusel bebé -->
           <div class="carousel-section">
-            <p class="carousel-label">✦ &nbsp; Mis primeros recuerdos &nbsp; ✦</p>
+            <p class="carousel-label">Mis primeros recuerdos</p>
             <div class="carousel-track-wrap">
               <div class="carousel-track" id="baby-track">
                 <div class="carousel-slide"><img src="baby1.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
@@ -2282,8 +2293,6 @@
                 <div class="carousel-slide"><img src="baby4.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby5.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby6.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
-                <div class="carousel-slide"><img src="baby7.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
-                <div class="carousel-slide"><img src="baby8.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby9.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby10.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
                 <div class="carousel-slide"><img src="baby11.jpg" alt="Kimberly beb&#233;" loading="lazy"></div>
@@ -2723,37 +2732,8 @@
     spawnSparkles('sparkle-container-3');
     spawnSparkles('sparkle-container-4');
 
-    /* BLUE SPARKS – countdown */
-    (function spawnBlueSparks() {
-      const c = document.getElementById('cd-sparks');
-      if (!c) return;
-      setInterval(() => {
-        for (let i = 0; i < 3; i++) {
-          const s = document.createElement('div');
-          s.className = 'cd-spark';
-          const size = Math.random() * 3 + 1.5;
-          const dur  = (Math.random() * 1.4 + 1.0).toFixed(2) + 's';
-          const delay = (Math.random() * 0.6).toFixed(2) + 's';
-          const blues = [
-            'rgba(100,180,255,0.9)', 'rgba(60,150,255,0.85)',
-            'rgba(140,210,255,0.95)', 'rgba(80,200,240,0.85)'
-          ];
-          const col = blues[Math.floor(Math.random() * blues.length)];
-          s.style.cssText = [
-            `left:${(Math.random() * 90 + 5).toFixed(1)}%`,
-            `top:${(Math.random() * 80 + 10).toFixed(1)}%`,
-            `width:${size.toFixed(1)}px`,
-            `height:${size.toFixed(1)}px`,
-            `background:${col}`,
-            `box-shadow:0 0 ${(size*2.5).toFixed(0)}px ${(size*1.5).toFixed(0)}px ${col}`,
-            `animation-duration:${dur}`,
-            `animation-delay:${delay}`
-          ].join(';');
-          c.appendChild(s);
-          setTimeout(() => s.remove(), (parseFloat(dur) + parseFloat(delay)) * 1000 + 200);
-        }
-      }, 320);
-    })();
+    /* BLUE SPARKS – countdown – desactivados */
+    /* (function spawnBlueSparks() { ... })(); */
 
     /* SCROLL REVEAL */
     function initReveal() {

@@ -595,6 +595,45 @@
       line-height: 1;
     }
 
+    /* ── BLUE SPARKS (countdown) ── */
+    .cd-sparks-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      overflow: hidden;
+    }
+
+    .cd-spark {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      animation: cdSparkPop ease-in-out forwards;
+    }
+
+    @keyframes cdSparkPop {
+      0% {
+        opacity: 0;
+        transform: scale(0) translateY(0);
+      }
+
+      25% {
+        opacity: 1;
+        transform: scale(1) translateY(-6px);
+      }
+
+      60% {
+        opacity: 0.55;
+        transform: scale(0.65) translateY(-16px);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0) translateY(-28px);
+      }
+    }
+
     /* ── BUTTERFLIES ── */
     .butterfly-container {
       position: absolute;
@@ -812,19 +851,14 @@
 
     .collage-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
       gap: clamp(0.6rem, 1.5vw, 1.2rem);
       width: 100%;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 500px) {
       .collage-grid {
-        grid-template-columns: 1.4fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-      }
-
-      .collage-item:nth-child(1) {
-        grid-row: span 2;
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -836,18 +870,9 @@
       aspect-ratio: 3/4;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 500px) {
       .collage-item {
-        aspect-ratio: auto;
-      }
-
-      .collage-item:nth-child(1) {
-        aspect-ratio: auto;
-        min-height: 380px;
-      }
-
-      .collage-item:not(:nth-child(1)) {
-        min-height: 180px;
+        min-height: 260px;
       }
     }
 
@@ -925,42 +950,63 @@
       max-width: 600px;
     }
 
-    .padrinos-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-
     .padrinos-label {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-size: clamp(2.8rem, 7vw, 5rem);
       color: var(--white);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
       text-shadow: 0 0 30px rgba(201, 168, 76, 0.4);
     }
 
     .padrinos-names {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.15rem, 2.8vw, 1.6rem);
-      color: var(--gold-light);
-      line-height: 1;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.2;
       font-weight: 400;
     }
 
-    .padrinos-names span {
+    .padrinos-names .pname {
       display: block;
-      padding: 0.55rem 0;
+      padding: 0.6rem 0;
+      text-shadow:
+        0 0 22px rgba(80, 160, 255, 0.7),
+        0 0 45px rgba(60, 130, 255, 0.45),
+        0 2px 16px rgba(0, 0, 0, 0.6);
+      animation: nameBlueGlow 3.5s ease-in-out infinite;
+    }
+
+    .padrinos-names .pname:nth-child(3) {
+      animation-delay: 1.75s;
+    }
+
+    @keyframes nameBlueGlow {
+
+      0%,
+      100% {
+        text-shadow:
+          0 0 18px rgba(80, 160, 255, 0.5),
+          0 0 35px rgba(60, 130, 255, 0.28),
+          0 2px 14px rgba(0, 0, 0, 0.55);
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      50% {
+        text-shadow:
+          0 0 30px rgba(100, 180, 255, 0.95),
+          0 0 60px rgba(70, 150, 255, 0.65),
+          0 0 90px rgba(40, 120, 240, 0.3),
+          0 2px 14px rgba(0, 0, 0, 0.5);
+        color: rgba(220, 238, 255, 1);
+      }
     }
 
     .padrinos-sep {
       display: block;
       font-size: 0.65rem;
-      color: rgba(201, 168, 76, 0.5);
+      color: rgba(100, 170, 255, 0.45);
       letter-spacing: 0.4em;
-      margin: 0.2rem 0;
+      margin: 0.1rem 0;
     }
 
     /* ── SEC 6: PHOTO2 ── */
@@ -1020,77 +1066,83 @@
       width: 100%;
     }
 
-    .detalles-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
+    /* ── EL GRAN DÍA – new design ── */
+    .events-wrap {
+      width: 100%;
+      max-width: 680px;
+      margin: 2.2rem auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
 
-    @media (max-width: 600px) {
-      .detalles-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .detalle-card {
-      background: rgba(8, 18, 38, 0.60);
-      border: 1px solid rgba(201, 168, 76, 0.22);
-      backdrop-filter: blur(14px);
-      padding: 1.8rem 1.4rem;
+    .event-block {
+      width: 100%;
+      text-align: center;
+      padding: 2rem 1rem;
       position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s;
     }
 
-    .detalle-card:hover {
-      border-color: rgba(201, 168, 76, 0.45);
-    }
-
-    .detalle-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-
-    .detalle-icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .detalle-type {
+    .event-type-tag {
       font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.4em;
-      color: var(--gold);
+      font-size: clamp(0.62rem, 1.6vw, 0.78rem);
+      letter-spacing: 0.55em;
       text-transform: uppercase;
-      margin-bottom: 0.45rem;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
     }
 
-    .detalle-time {
+    .event-big-time {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.4rem;
+      font-size: clamp(4rem, 12vw, 7.5rem);
       color: var(--white);
+      line-height: 1;
+      text-shadow:
+        0 0 50px rgba(201, 168, 76, 0.5),
+        0 4px 28px rgba(0, 0, 0, 0.7);
       margin-bottom: 0.4rem;
-      text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
     }
 
-    .detalle-lugar {
+    .event-big-venue {
       font-family: 'Cinzel', serif;
-      font-size: 0.82rem;
+      font-size: clamp(1.1rem, 3vw, 1.8rem);
       color: var(--gold-light);
-      margin-bottom: 0.4rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.55rem;
+      font-weight: 600;
     }
 
-    .detalle-dir {
+    .event-address {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.92rem;
-      color: rgba(255, 255, 255, 0.68);
-      line-height: 1.5;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .event-sep {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 85%;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .event-sep .eline {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.45), transparent);
+    }
+
+    .event-sep .ediamond {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      opacity: 0.7;
     }
 
     .sec-eyebrow {
@@ -1293,23 +1345,48 @@
 
     .regalo-title {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
       color: var(--gold-light);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
+      animation: regaloTitleGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes regaloTitleGlow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 20px rgba(201, 168, 76, 0.25), 0 2px 12px rgba(0, 0, 0, 0.5);
+      }
+
+      50% {
+        text-shadow: 0 0 40px rgba(201, 168, 76, 0.65), 0 0 70px rgba(201, 168, 76, 0.25), 0 2px 12px rgba(0, 0, 0, 0.4);
+      }
     }
 
     .regalo-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
       font-style: italic;
-      color: rgba(255, 255, 255, 0.87);
-      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.90);
+      line-height: 2;
     }
 
     .regalo-envelope {
-      margin-top: 1.5rem;
-      font-size: 3rem;
-      animation: floatEnv 3s ease-in-out infinite;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      animation: floatEnv 3.5s ease-in-out infinite;
+    }
+
+    .envelope-svg {
+      width: clamp(70px, 15vw, 100px);
+      height: auto;
+      filter: drop-shadow(0 0 14px rgba(201, 168, 76, 0.35)) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+      transition: filter 0.4s ease, transform 0.4s ease;
+    }
+
+    .regalo-envelope:hover .envelope-svg {
+      filter: drop-shadow(0 0 24px rgba(201, 168, 76, 0.65)) drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
     }
 
     @keyframes floatEnv {
@@ -1320,7 +1397,7 @@
       }
 
       50% {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
       }
     }
 
@@ -1477,45 +1554,46 @@
     }
 
     .tl-icon-wrap {
-      width: clamp(62px, 14vw, 80px);
-      height: clamp(62px, 14vw, 80px);
+      width: clamp(90px, 20vw, 116px);
+      height: clamp(90px, 20vw, 116px);
       border-radius: 50%;
-      border: 1px solid rgba(201, 168, 76, 0.4);
-      background: rgba(8, 16, 36, 0.65);
-      backdrop-filter: blur(12px);
+      border: 1px solid rgba(201, 168, 76, 0.48);
+      background: rgba(8, 16, 36, 0.68);
+      backdrop-filter: blur(14px);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.85rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 16px rgba(201, 168, 76, 0.08);
-      transition: box-shadow 0.35s ease, border-color 0.35s ease;
+      margin-bottom: 1rem;
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.45), 0 0 22px rgba(201, 168, 76, 0.10);
+      transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
     }
 
     .tl-item:hover .tl-icon-wrap {
-      border-color: rgba(201, 168, 76, 0.7);
-      box-shadow: 0 4px 28px rgba(201, 168, 76, 0.2), 0 0 0 4px rgba(201, 168, 76, 0.06);
+      border-color: rgba(201, 168, 76, 0.80);
+      box-shadow: 0 6px 36px rgba(201, 168, 76, 0.28), 0 0 0 6px rgba(201, 168, 76, 0.06);
+      transform: scale(1.07);
     }
 
     .tl-icon-wrap svg {
-      width: clamp(28px, 6vw, 36px);
-      height: clamp(28px, 6vw, 36px);
+      width: clamp(44px, 9vw, 56px);
+      height: clamp(44px, 9vw, 56px);
     }
 
     .tl-event {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+      font-size: clamp(1.65rem, 4.5vw, 2.4rem);
       color: var(--white);
       font-style: italic;
-      margin-bottom: 0.28rem;
+      margin-bottom: 0.45rem;
     }
 
     .tl-desc {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.5rem, 1.3vw, 0.65rem);
-      letter-spacing: 0.45em;
+      font-size: clamp(0.68rem, 1.8vw, 0.88rem);
+      letter-spacing: 0.42em;
       text-transform: uppercase;
       color: var(--gold);
-      opacity: 0.75;
+      opacity: 0.88;
     }
 
     /* ── FOOTER ── */
@@ -1775,6 +1853,7 @@
       <div class="bg"></div>
       <div class="overlay"></div>
       <div class="butterfly-container" id="butterfly-container-1"></div>
+      <div class="cd-sparks-container" id="cd-sparks"></div>
 
       <div class="inner">
         <div class="countdown-wrap reveal">
@@ -1839,10 +1918,6 @@
             <img src="foto5.jpg" alt="Kimberly" loading="lazy">
             <span class="zoom-hint">Ver foto</span>
           </div>
-          <div class="collage-item" onclick="openLightbox(this.querySelector('img'))">
-            <img src="foto4.jpg" alt="Kimberly" loading="lazy">
-            <span class="zoom-hint">Ver foto</span>
-          </div>
         </div>
       </div>
     </section>
@@ -1854,13 +1929,12 @@
       <div class="stars-layer"></div>
       <div class="sparkle-container" id="sparkle-container-2"></div>
       <div class="inner reveal">
-        <p class="padrinos-title">&#10022; Con el apoyo de &#10022;</p>
         <h2 class="padrinos-label">Padrinos de Honor</h2>
         <div class="gold-line"></div>
         <div class="padrinos-names">
-          <span>Jos&#233; L&#243;pez</span>
+          <span class="pname">Jos&#233; L&#243;pez</span>
           <span class="padrinos-sep">&#10022;</span>
-          <span>Adelelma Hern&#225;ndez</span>
+          <span class="pname">Adelelma Hern&#225;ndez</span>
         </div>
       </div>
     </section>
@@ -1998,20 +2072,25 @@
         <p class="sec-eyebrow">&#10022; Te esperamos &#10022;</p>
         <h2 class="sec-title">El Gran D&#237;a</h2>
         <div class="gold-line"></div>
-        <div class="detalles-grid">
-          <div class="detalle-card">
-            <div class="detalle-icon">&#9962;</div>
-            <p class="detalle-type">Ceremonia Religiosa</p>
-            <p class="detalle-time">2:00 pm</p>
-            <p class="detalle-lugar">Santa Helena</p>
-            <p class="detalle-dir">8912 S Gate Ave<br>South Gate, CA 90280</p>
+        <div class="events-wrap">
+          <div class="event-block">
+            <p class="event-type-tag">&#10022; Ceremonia Religiosa &#10022;</p>
+            <p class="event-big-time">2:00 pm</p>
+            <p class="event-big-venue">Santa Helena</p>
+            <p class="event-address">8912 S Gate Ave &nbsp;·&nbsp; South Gate, CA 90280</p>
           </div>
-          <div class="detalle-card">
-            <div class="detalle-icon">&#127870;</div>
-            <p class="detalle-type">Recepci&#243;n</p>
-            <p class="detalle-time">5:00 pm</p>
-            <p class="detalle-lugar">Luxor Banquet Hall</p>
-            <p class="detalle-dir">7850 Beach Blvd<br>Buena Park, CA 90620</p>
+
+          <div class="event-sep">
+            <span class="eline"></span>
+            <span class="ediamond"></span>
+            <span class="eline"></span>
+          </div>
+
+          <div class="event-block">
+            <p class="event-type-tag">&#10022; Recepci&#243;n &#10022;</p>
+            <p class="event-big-time">5:00 pm</p>
+            <p class="event-big-venue">Luxor Banquet Hall</p>
+            <p class="event-address">7850 Beach Blvd &nbsp;·&nbsp; Buena Park, CA 90620</p>
           </div>
         </div>
       </div>
@@ -2082,7 +2161,18 @@
             puedo sugerir: la <strong style="color:var(--gold-light)">lluvia de sobres</strong>
             es la tradici&#243;n de regalar dinero en efectivo dentro de un sobre el d&#237;a del evento."
           </p>
-          <div class="regalo-envelope">&#128140;</div>
+          <div class="regalo-envelope">
+            <svg class="envelope-svg" viewBox="0 0 100 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="96" height="66" rx="2" stroke="rgba(232,213,163,0.7)" stroke-width="1.5"
+                fill="rgba(8,16,36,0.4)" />
+              <path d="M2 4 L50 38 L98 4" stroke="rgba(201,168,76,0.65)" stroke-width="1.4" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 68 L36 36" stroke="rgba(201,168,76,0.4)" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M98 68 L64 36" stroke="rgba(201,168,76,0.4)" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M42 44 L22 58" stroke="rgba(232,213,163,0.25)" stroke-width="0.8" />
+              <path d="M58 44 L78 58" stroke="rgba(232,213,163,0.25)" stroke-width="0.8" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>
@@ -2218,6 +2308,38 @@
     spawnSparkles('sparkle-container-2');
     spawnSparkles('sparkle-container-3');
     spawnSparkles('sparkle-container-4');
+
+    /* BLUE SPARKS – countdown */
+    (function spawnBlueSparks() {
+      const c = document.getElementById('cd-sparks');
+      if (!c) return;
+      setInterval(() => {
+        for (let i = 0; i < 3; i++) {
+          const s = document.createElement('div');
+          s.className = 'cd-spark';
+          const size = Math.random() * 3 + 1.5;
+          const dur  = (Math.random() * 1.4 + 1.0).toFixed(2) + 's';
+          const delay = (Math.random() * 0.6).toFixed(2) + 's';
+          const blues = [
+            'rgba(100,180,255,0.9)', 'rgba(60,150,255,0.85)',
+            'rgba(140,210,255,0.95)', 'rgba(80,200,240,0.85)'
+          ];
+          const col = blues[Math.floor(Math.random() * blues.length)];
+          s.style.cssText = [
+            `left:${(Math.random() * 90 + 5).toFixed(1)}%`,
+            `top:${(Math.random() * 80 + 10).toFixed(1)}%`,
+            `width:${size.toFixed(1)}px`,
+            `height:${size.toFixed(1)}px`,
+            `background:${col}`,
+            `box-shadow:0 0 ${(size*2.5).toFixed(0)}px ${(size*1.5).toFixed(0)}px ${col}`,
+            `animation-duration:${dur}`,
+            `animation-delay:${delay}`
+          ].join(';');
+          c.appendChild(s);
+          setTimeout(() => s.remove(), (parseFloat(dur) + parseFloat(delay)) * 1000 + 200);
+        }
+      }, 320);
+    })();
 
     /* SCROLL REVEAL */
     function initReveal() {

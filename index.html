@@ -919,31 +919,35 @@
 
     .carousel-track {
       display: flex;
-      transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .carousel-slide {
       flex: 0 0 100%;
+      min-width: 0;
       position: relative;
     }
 
     .carousel-slide img {
       width: 100%;
-      height: clamp(320px, 80vw, 580px);
-      aspect-ratio: 3/4;
+      height: clamp(320px, 75vw, 540px);
       object-fit: cover;
-      object-position: center top;
+      object-position: center 20%;
       display: block;
-      image-rendering: -webkit-optimize-contrast;
-      filter: contrast(1.04) saturate(1.06);
       border-radius: 20px;
+      will-change: auto;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .carousel-track-wrap {
       position: relative;
       border-radius: 20px;
       overflow: hidden;
+      touch-action: pan-y;
       box-shadow:
         0 0 0 1px rgba(80, 160, 255, 0.18),
         0 0 14px rgba(60, 140, 255, 0.12),
@@ -3194,64 +3198,11 @@
             es la tradici&#243;n de regalar dinero en efectivo dentro de un sobre el d&#237;a del evento."
           </p>
           <div class="regalo-envelope">
-            <!-- Mariposas de fondo (salen de atrás del sobre) -->
             <div style="position:relative;display:inline-block;">
-              <!-- Mariposas volando -->
-              <svg
-                style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:320px;height:220px;pointer-events:none;z-index:0;"
-                viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Mariposa 1 – arriba izquierda -->
-                <g style="animation:bflyFloat1 4s ease-in-out infinite;" transform="translate(30,30) scale(0.85)">
-                  <ellipse cx="10" cy="10" rx="13" ry="8" fill="rgba(80,180,255,0.55)" filter="url(#bfGlow)" />
-                  <ellipse cx="30" cy="10" rx="13" ry="8" fill="rgba(80,180,255,0.55)" filter="url(#bfGlow)" />
-                  <ellipse cx="10" cy="22" rx="9" ry="6" fill="rgba(120,210,255,0.40)" />
-                  <ellipse cx="30" cy="22" rx="9" ry="6" fill="rgba(120,210,255,0.40)" />
-                  <line x1="20" y1="4" x2="20" y2="28" stroke="rgba(60,140,255,0.6)" stroke-width="1.5" />
-                </g>
-                <!-- Mariposa 2 – arriba derecha -->
-                <g style="animation:bflyFloat2 5s ease-in-out infinite 0.8s;" transform="translate(250,20) scale(0.7)">
-                  <ellipse cx="10" cy="10" rx="13" ry="8" fill="rgba(100,200,255,0.60)" filter="url(#bfGlow)" />
-                  <ellipse cx="30" cy="10" rx="13" ry="8" fill="rgba(100,200,255,0.60)" filter="url(#bfGlow)" />
-                  <ellipse cx="10" cy="22" rx="9" ry="6" fill="rgba(140,220,255,0.45)" />
-                  <ellipse cx="30" cy="22" rx="9" ry="6" fill="rgba(140,220,255,0.45)" />
-                  <line x1="20" y1="4" x2="20" y2="28" stroke="rgba(80,160,255,0.6)" stroke-width="1.5" />
-                </g>
-                <!-- Mariposa 3 – abajo derecha -->
-                <g style="animation:bflyFloat3 6s ease-in-out infinite 1.5s;"
-                  transform="translate(240,155) scale(0.65)">
-                  <ellipse cx="10" cy="10" rx="13" ry="8" fill="rgba(60,160,255,0.50)" filter="url(#bfGlow)" />
-                  <ellipse cx="30" cy="10" rx="13" ry="8" fill="rgba(60,160,255,0.50)" filter="url(#bfGlow)" />
-                  <ellipse cx="10" cy="22" rx="9" ry="6" fill="rgba(110,195,255,0.38)" />
-                  <ellipse cx="30" cy="22" rx="9" ry="6" fill="rgba(110,195,255,0.38)" />
-                  <line x1="20" y1="4" x2="20" y2="28" stroke="rgba(50,130,255,0.55)" stroke-width="1.5" />
-                </g>
-                <!-- Mariposa 4 – pequeña arriba centro -->
-                <g style="animation:bflyFloat2 3.5s ease-in-out infinite 2.2s;"
-                  transform="translate(140,10) scale(0.5)">
-                  <ellipse cx="10" cy="10" rx="13" ry="8" fill="rgba(130,220,255,0.65)" filter="url(#bfGlow)" />
-                  <ellipse cx="30" cy="10" rx="13" ry="8" fill="rgba(130,220,255,0.65)" filter="url(#bfGlow)" />
-                  <ellipse cx="10" cy="22" rx="9" ry="6" fill="rgba(160,230,255,0.50)" />
-                  <ellipse cx="30" cy="22" rx="9" ry="6" fill="rgba(160,230,255,0.50)" />
-                  <line x1="20" y1="4" x2="20" y2="28" stroke="rgba(100,190,255,0.7)" stroke-width="1.5" />
-                </g>
-                <!-- Mariposa 5 – izquierda abajo -->
-                <g style="animation:bflyFloat1 7s ease-in-out infinite 0.3s;" transform="translate(15,160) scale(0.6)">
-                  <ellipse cx="10" cy="10" rx="13" ry="8" fill="rgba(90,195,255,0.48)" filter="url(#bfGlow)" />
-                  <ellipse cx="30" cy="10" rx="13" ry="8" fill="rgba(90,195,255,0.48)" filter="url(#bfGlow)" />
-                  <ellipse cx="10" cy="22" rx="9" ry="6" fill="rgba(130,215,255,0.35)" />
-                  <ellipse cx="30" cy="22" rx="9" ry="6" fill="rgba(130,215,255,0.35)" />
-                  <line x1="20" y1="4" x2="20" y2="28" stroke="rgba(70,150,255,0.55)" stroke-width="1.5" />
-                </g>
-                <defs>
-                  <filter id="bfGlow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="3" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-              </svg>
+              <!-- contenedor de mariposas JS -->
+              <div id="env-butterflies"
+                style="position:absolute;inset:-90px;pointer-events:none;z-index:0;overflow:visible;"></div>
+              <!-- SVG placeholder (eliminado) --><svg style="display:none" viewBox="0 0 1 1"></svg>
 
               <!-- El sobre bonito blanco -->
               <svg class="envelope-svg" viewBox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -3333,59 +3284,6 @@
             </div>
           </div>
 
-          <style>
-            @keyframes bflyFloat1 {
-
-              0%,
-              100% {
-                transform: translate(0, 0) rotate(-5deg);
-                opacity: 0.7;
-              }
-
-              33% {
-                transform: translate(6px, -12px) rotate(3deg);
-                opacity: 1;
-              }
-
-              66% {
-                transform: translate(-4px, -6px) rotate(-8deg);
-                opacity: 0.8;
-              }
-            }
-
-            @keyframes bflyFloat2 {
-
-              0%,
-              100% {
-                transform: translate(0, 0) rotate(5deg);
-                opacity: 0.65;
-              }
-
-              40% {
-                transform: translate(-8px, -15px) rotate(-4deg);
-                opacity: 1;
-              }
-
-              70% {
-                transform: translate(5px, -8px) rotate(7deg);
-                opacity: 0.75;
-              }
-            }
-
-            @keyframes bflyFloat3 {
-
-              0%,
-              100% {
-                transform: translate(0, 0) rotate(-8deg);
-                opacity: 0.55;
-              }
-
-              50% {
-                transform: translate(10px, -18px) rotate(6deg);
-                opacity: 0.9;
-              }
-            }
-          </style>
         </div>
       </div>
     </section>
@@ -3779,7 +3677,75 @@
           delay += 65;
           });
           })();
-      
+
+    /* MARIPOSAS DEL SOBRE – leves, azul brillante, sin cuadro */
+    (function initEnvButterflies() {
+      const c = document.getElementById('env-butterflies');
+      if (!c) return;
+
+      function spawnEnvButterfly() {
+        const b = document.createElement('div');
+        const size = Math.random() * 12 + 8;          // 8–20px, pequeñitas
+        const hue  = Math.floor(Math.random() * 30 + 195); // azul 195–225
+        const sat  = Math.floor(Math.random() * 20 + 75);
+        const lit  = Math.floor(Math.random() * 15 + 65);
+        // posición aleatoria dentro del contenedor ampliado
+        const startX = Math.random() * 100;
+        const startY = Math.random() * 100;
+        // dirección de vuelo
+        const tx = (Math.random() - 0.5) * 180 + 'px';
+        const ty = -(Math.random() * 140 + 40) + 'px';
+        const dur = (Math.random() * 5 + 5) + 's';
+        const delay = (Math.random() * 3) + 's';
+
+        b.style.cssText = `
+          position:absolute;
+          left:${startX}%;top:${startY}%;
+          width:${size}px;height:${size * 0.72}px;
+          --tx:${tx};--ty:${ty};
+          animation: envBfFly ${dur} ease-in-out ${delay} infinite;
+          pointer-events:none;
+          opacity:0;
+        `;
+        // alas con SVG inline, sin fondo, sin borde
+        b.innerHTML = `<svg viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;overflow:visible;">
+          <ellipse cx="10" cy="11" rx="11" ry="7"  fill="hsla(${hue},${sat}%,${lit}%,0.55)"/>
+          <ellipse cx="30" cy="11" rx="11" ry="7"  fill="hsla(${hue},${sat}%,${lit}%,0.55)"/>
+          <ellipse cx="10" cy="21" rx="7"  ry="4.5" fill="hsla(${hue},${sat}%,${lit}%,0.38)"/>
+          <ellipse cx="30" cy="21" rx="7"  ry="4.5" fill="hsla(${hue},${sat}%,${lit}%,0.38)"/>
+          <line x1="20" y1="5" x2="20" y2="27" stroke="hsla(${hue},60%,45%,0.5)" stroke-width="1.2"/>
+        </svg>`;
+        c.appendChild(b);
+        const totalMs = (parseFloat(dur) + parseFloat(delay)) * 1000 * 2;
+        setTimeout(() => { if (b.parentNode) b.remove(); }, totalMs);
+      }
+
+      // Añadir keyframes al head si no existen
+      if (!document.getElementById('env-bf-style')) {
+        const st = document.createElement('style');
+        st.id = 'env-bf-style';
+        st.textContent = `
+          @keyframes envBfFly {
+            0%   { opacity:0; transform:translate(0,0) rotate(-8deg) scaleX(1); }
+            8%   { opacity:0.75; }
+            40%  { transform:translate(calc(var(--tx)*0.4), calc(var(--ty)*0.4)) rotate(5deg) scaleX(0.4); }
+            55%  { transform:translate(calc(var(--tx)*0.4), calc(var(--ty)*0.4)) rotate(5deg) scaleX(1); }
+            80%  { opacity:0.55; transform:translate(var(--tx), var(--ty)) rotate(12deg) scaleX(0.5); }
+            100% { opacity:0; transform:translate(var(--tx), var(--ty)) rotate(18deg) scaleX(1); }
+          }
+        `;
+        document.head.appendChild(st);
+      }
+
+      // Generar mariposas cada 1.4 segundos, máximo 6 vivas a la vez
+      setInterval(() => {
+        if (c.children.length < 6) spawnEnvButterfly();
+      }, 1400);
+
+      // Sembrar 3 iniciales con delay escalonado
+      [0, 600, 1200].forEach(d => setTimeout(spawnEnvButterfly, d));
+    })();
+
   </script>
 </body>
 

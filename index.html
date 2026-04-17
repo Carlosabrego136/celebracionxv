@@ -253,113 +253,112 @@
     }
 
     #sec-bendicion .overlay {
-      background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.50) 0%,
-          rgba(5, 10, 30, 0.20) 20%,
-          rgba(5, 10, 30, 0.18) 70%,
-          rgba(5, 10, 30, 0.55) 100%);
+    background: linear-gradient(180deg,
+    rgba(5, 10, 30, 0.45) 0%,
+    rgba(5, 10, 30, 0.15) 25%,
+    rgba(5, 10, 30, 0.10) 60%,
+    rgba(5, 10, 30, 0.75) 100%);
     }
-
+    
     #sec-bendicion .content {
-      position: relative;
-      z-index: 2;
-      max-width: 860px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.8rem;
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
     }
-
+    
     .sec1-blessing {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.8rem, 7.5vw, 5.5rem);
-      color: var(--white);
-      line-height: 1.3;
-      text-shadow: 0 0 40px rgba(201, 168, 76, 0.45), 0 3px 18px rgba(0, 0, 0, 0.75);
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.8rem, 7.5vw, 5.5rem);
+    color: var(--white);
+    line-height: 1.3;
+    text-shadow: 0 0 40px rgba(201, 168, 76, 0.45), 0 3px 18px rgba(0, 0, 0, 0.75);
     }
-
+    
     .sec1-invite {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.05rem, 2.6vw, 1.5rem);
-      font-style: italic;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.90);
-      line-height: 1.75;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
-      max-width: 680px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.90);
+    line-height: 1.75;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+    max-width: 680px;
     }
-
+    
     .sec1-invite em {
-      font-style: normal;
-      color: var(--gold-light);
-      font-weight: 400;
+    font-style: normal;
+    color: var(--gold-light);
+    font-weight: 400;
     }
-
-    /* New date design — horizontal pill */
+    
     .sec1-date-row {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      background: rgba(10, 18, 40, 0.55);
-      border: 1px solid rgba(201, 168, 76, 0.35);
-      backdrop-filter: blur(12px);
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(10, 18, 40, 0.55);
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.12);
     }
-
+    
     .sec1-date-cell {
-      padding: 1rem 1.8rem;
-      text-align: center;
-      position: relative;
+    padding: 1rem 1.8rem;
+    text-align: center;
+    position: relative;
     }
-
+    
     .sec1-date-cell+.sec1-date-cell::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 20%;
-      height: 60%;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5), transparent);
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5), transparent);
     }
-
+    
     .sec1-date-cell .num {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 6vw, 3.8rem);
-      color: var(--gold);
-      line-height: 1;
-      font-weight: 600;
-      display: block;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    color: var(--gold);
+    line-height: 1;
+    font-weight: 600;
+    display: block;
     }
-
+    
     .sec1-date-cell .lbl {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
-      color: var(--gold-light);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      font-weight: 300;
-      display: block;
-      margin-top: 0.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+    color: var(--gold-light);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: block;
+    margin-top: 0.2rem;
     }
-
+    
     /* ── SEC 2: COUNTDOWN ── */
     #sec-countdown {
-      min-height: 70vh;
-      display: flex;
-      align-items: stretch;
+    min-height: 70vh;
+    display: flex;
+    align-items: stretch;
     }
-
+    
     #sec-countdown .bg {
-      background-image: url('fondo2.jpg');
+    background-image: url('fondo2.jpg');
     }
-
+    
     #sec-countdown .overlay {
-      background: linear-gradient(180deg,
-          rgba(5, 10, 30, 0.55) 0%,
-          rgba(5, 10, 30, 0.15) 30%,
-          rgba(5, 10, 30, 0.15) 70%,
-          rgba(5, 10, 30, 0.55) 100%);
+    background: linear-gradient(180deg,
+    rgba(5, 10, 30, 0.75) 0%,
+    rgba(5, 10, 30, 0.15) 25%,
+    rgba(5, 10, 30, 0.15) 75%,
+    rgba(5, 10, 30, 0.55) 100%);
     }
 
     #sec-countdown .inner {

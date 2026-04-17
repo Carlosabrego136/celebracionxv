@@ -458,26 +458,27 @@
 
     .sec1-invite {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-size: clamp(1.55rem, 4vw, 2.2rem);
       font-style: italic;
-      font-weight: 300;
+      font-weight: 400;
       color: rgba(255, 255, 255, 1);
-      line-height: 2;
+      line-height: 1.9;
       max-width: 650px;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       position: relative;
-      padding: 0.6rem 1rem;
-      background: transparent;
-      backdrop-filter: none;
-      border-top: none;
-      border-bottom: none;
+      padding: 1.4rem 2rem;
+      background: rgba(2, 5, 18, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-left: 2px solid rgba(201, 168, 76, 0.4);
+      border-right: 2px solid rgba(201, 168, 76, 0.4);
       text-shadow:
-        0 2px 20px rgba(0, 0, 0, 0.9),
-        0 0 40px rgba(0, 0, 0, 0.7),
-        -1px -1px 0 rgba(0, 0, 0, 0.5),
-        1px 1px 0 rgba(0, 0, 0, 0.5);
+        0 1px 4px rgba(0, 0, 0, 1),
+        0 0 20px rgba(0, 0, 0, 0.8);
       width: 100%;
       text-align: center;
+      border-radius: 4px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
     }
 
     .sec1-invite em {
@@ -583,7 +584,42 @@
       letter-spacing: 0.3em;
     }
 
-    /* ── SEC 2: COUNTDOWN ── */
+    /* ── ESTRELLAS ZONA NEGRA sec-bendicion ── */
+    .star-twinkle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      background: rgba(200, 230, 255, 0.9);
+      box-shadow: 0 0 3px 1px rgba(180, 220, 255, 0.5);
+      animation: starTwinkle ease-in-out infinite;
+    }
+
+    @keyframes starTwinkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0.4);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .sec1-dark-stars {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 42%;
+      /* sólo la parte negra inferior */
+      pointer-events: none;
+      z-index: 3;
+      overflow: hidden;
+    }
+
     #sec-countdown {
       min-height: 70vh;
       display: flex;
@@ -890,13 +926,13 @@
 
     .carousel-slide img {
       width: 100%;
-      height: clamp(220px, 56vw, 420px);
-      aspect-ratio: 16/9;
+      height: clamp(320px, 80vw, 580px);
+      aspect-ratio: 3/4;
       object-fit: cover;
       object-position: center top;
       display: block;
       image-rendering: -webkit-optimize-contrast;
-      filter: contrast(1.04) saturate(1.08);
+      filter: contrast(1.04) saturate(1.06);
       border-radius: 20px;
     }
 
@@ -1085,20 +1121,20 @@
       padding-bottom: 5rem;
     }
 
-    /* ── PHOTO FRAME — gallery style ── */
+    /* ── PHOTO FRAME — vertical portrait ── */
     .photo-gallery-wrap {
       position: relative;
-      max-width: min(780px, 95vw);
+      max-width: min(420px, 90vw);
       width: 100%;
     }
 
     .photo-gallery-wrap img {
       width: 100%;
       height: auto;
-      aspect-ratio: 16/9;
+      aspect-ratio: 3/4;
       display: block;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
       border-radius: 18px;
       box-shadow:
         0 0 0 1px rgba(201, 168, 76, 0.45),
@@ -1107,7 +1143,7 @@
       cursor: pointer;
       transition: transform 0.4s ease;
       image-rendering: -webkit-optimize-contrast;
-      filter: contrast(1.05) saturate(1.08);
+      filter: contrast(1.05) saturate(1.06);
     }
 
     .photo-gallery-wrap img:hover {
@@ -1138,6 +1174,146 @@
       right: -10px;
       border-width: 0 2px 2px 0;
       border-radius: 0 0 4px 0;
+    }
+
+    /* ── XV AÑOS ANIMATION OVERLAY ── */
+    .xv-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 6;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    /* Texto XV flotante */
+    .xv-text-float {
+      position: absolute;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(4rem, 16vw, 7rem);
+      color: rgba(160, 210, 255, 0);
+      text-shadow: none;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      animation: xvFloat 7s ease-in-out infinite;
+      letter-spacing: 0.04em;
+      user-select: none;
+    }
+
+    .xv-text-float.xv-top {
+      top: 8%;
+      animation-delay: 0s;
+    }
+
+    .xv-text-float.xv-bot {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.6em;
+      bottom: 10%;
+      font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+      animation-delay: 2s;
+    }
+
+    @keyframes xvFloat {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(6px);
+      }
+
+      20% {
+        opacity: 1;
+        color: rgba(140, 195, 255, 0.22);
+        text-shadow: 0 0 30px rgba(80, 160, 255, 0.3), 0 0 60px rgba(40, 120, 240, 0.12);
+      }
+
+      50% {
+        opacity: 0.85;
+        transform: translateX(-50%) translateY(-4px);
+        color: rgba(160, 215, 255, 0.18);
+        text-shadow: 0 0 40px rgba(100, 180, 255, 0.35), 0 0 80px rgba(60, 140, 255, 0.15);
+      }
+
+      80% {
+        opacity: 0.9;
+        color: rgba(140, 195, 255, 0.2);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(6px);
+      }
+    }
+
+    /* Partículas de luz azul fina */
+    .xv-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(140, 200, 255, 0.8);
+      box-shadow: 0 0 5px 1px rgba(80, 160, 255, 0.4);
+      pointer-events: none;
+      animation: xvParticleFly ease-in-out infinite;
+    }
+
+    @keyframes xvParticleFly {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.3);
+      }
+
+      25% {
+        opacity: 0.8;
+        transform: translateY(-14px) scale(1);
+      }
+
+      75% {
+        opacity: 0.5;
+        transform: translateY(-32px) scale(0.7);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.2);
+      }
+    }
+
+    /* Línea azul fina horizontal decorativa */
+    .xv-line {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: linear-gradient(to right,
+          transparent,
+          rgba(100, 180, 255, 0.18) 20%,
+          rgba(140, 210, 255, 0.32) 50%,
+          rgba(100, 180, 255, 0.18) 80%,
+          transparent);
+      animation: xvLinePulse 5s ease-in-out infinite;
+    }
+
+    .xv-line.top {
+      top: 18%;
+      animation-delay: 0s;
+    }
+
+    .xv-line.bot {
+      bottom: 18%;
+      animation-delay: 2.5s;
+    }
+
+    @keyframes xvLinePulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scaleX(0.7);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleX(1);
+      }
     }
 
     /* sparkle overlay */
@@ -2494,6 +2670,7 @@
         <div class="aurora-band aurora-2"></div>
         <div class="aurora-band aurora-3"></div>
       </div>
+      <div class="sec1-dark-stars" id="sec1-dark-stars"></div>
       <div class="content reveal">
 
         <!-- texto arriba, sobre la foto -->
@@ -2619,6 +2796,14 @@
       <div class="inner reveal">
         <div class="photo-gallery-wrap">
           <img src="f4.jpg" alt="Kimberly" loading="lazy" onclick="openLightbox(this)">
+          <div class="xv-overlay" id="xv-overlay">
+            <div class="xv-text-float xv-top">XV</div>
+            <div class="xv-line top"></div>
+            <div class="xv-line bot"></div>
+            <div class="xv-text-float xv-bot"
+              style="font-family:'Cinzel',serif;font-size:clamp(0.65rem,2.2vw,0.9rem);letter-spacing:0.55em;bottom:12%;">
+              QUINCE &nbsp; AÑOS</div>
+          </div>
         </div>
       </div>
     </section>
@@ -3254,7 +3439,51 @@
       setInterval(() => goTo(current + 1), 8000);
     })();
 
-    /* ANIMACIÓN NOMBRE LETRA POR LETRA */
+    /* ESTRELLAS ZONA NEGRA */
+    (function initDarkStars() {
+      const container = document.getElementById('sec1-dark-stars');
+      if (!container) return;
+      const count = 38;
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('div');
+        s.className = 'star-twinkle';
+        const size = Math.random() * 2.2 + 0.8;
+        const dur = (Math.random() * 3 + 2.5) + 's';
+        const delay = (Math.random() * 6) + 's';
+        s.style.cssText = `
+          left:${Math.random()*100}%;
+          top:${Math.random()*100}%;
+          width:${size}px;height:${size}px;
+          animation-duration:${dur};
+          animation-delay:${delay};
+        `;
+        container.appendChild(s);
+      }
+    })();
+
+    /* XV PARTÍCULAS */
+    (function initXvParticles() {
+      const overlay = document.getElementById('xv-overlay');
+      if (!overlay) return;
+      function spawnParticle() {
+        const p = document.createElement('div');
+        p.className = 'xv-particle';
+        const size = Math.random() * 3 + 1.2;
+        const dur = (Math.random() * 3 + 2.5) + 's';
+        const delay = (Math.random() * 4) + 's';
+        p.style.cssText = `
+          left:${Math.random()*90+5}%;
+          top:${Math.random()*60+20}%;
+          width:${size}px;height:${size}px;
+          animation-duration:${dur};
+          animation-delay:${delay};
+          opacity:0;
+        `;
+        overlay.appendChild(p);
+        setTimeout(() => p.remove(), (parseFloat(dur) + parseFloat(delay)) * 1000 + 500);
+      }
+      setInterval(spawnParticle, 600);
+    })();
       (function animarPortada() {
       const nameEl = document.getElementById('portada-name-el');
       const dividerEl = document.getElementById('portada-divider-el');

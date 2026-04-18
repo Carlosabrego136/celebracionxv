@@ -372,6 +372,7 @@
     /* ── SEC 1: BENDICION ── */
     #sec-bendicion {
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -419,62 +420,64 @@
       max-width: 860px;
       width: 100%;
       padding: 4rem 2rem 0;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1.2rem;
-      /* ocupa todo el alto para empujar la fecha abajo */
+      /* dvh se adapta a navegadores con barra abajo (Chrome mobile, Safari) */
       min-height: 100vh;
+      min-height: 100dvh;
       justify-content: space-between;
     }
 
     /* bloque superior: bendición + invite */
     .sec1-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
     }
-    
+
     /* bloque inferior: fecha en la zona oscura */
     .sec1-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.9rem;
-    padding-bottom: 4.5rem;
-    width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      padding-bottom: 4.5rem;
+      width: 100%;
     }
-    
+
     /* Título XV Años en sección bendición */
     .sec1-xv-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(3.2rem, 9vw, 6.5rem);
-    color: var(--gold-light);
-    line-height: 1.1;
-    text-shadow:
-    0 0 50px rgba(201, 168, 76, 0.7),
-    0 0 100px rgba(201, 168, 76, 0.3),
-    0 4px 24px rgba(0, 0, 0, 0.95);
-    letter-spacing: 0.02em;
-    margin-bottom: 0.1rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      color: var(--gold-light);
+      line-height: 1.1;
+      text-shadow:
+        0 0 50px rgba(201, 168, 76, 0.7),
+        0 0 100px rgba(201, 168, 76, 0.3),
+        0 4px 24px rgba(0, 0, 0, 0.95);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.1rem;
     }
-    
+
     .sec1-blessing {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 5.5vw, 3.2rem);
-    color: rgba(255, 255, 255, 0.92);
-    line-height: 1.5;
-    font-weight: 400;
-    font-style: italic;
-    text-shadow:
-    0 0 30px rgba(201, 168, 76, 0.35),
-    0 2px 16px rgba(0, 0, 0, 0.95),
-    -1px -1px 0 rgba(0, 0, 0, 0.5),
-    1px -1px 0 rgba(0, 0, 0, 0.5),
-    -1px 1px 0 rgba(0, 0, 0, 0.5),
-    1px 1px 0 rgba(0, 0, 0, 0.5);
-    letter-spacing: 0.04em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.5;
+      font-weight: 400;
+      font-style: italic;
+      text-shadow:
+        0 0 30px rgba(201, 168, 76, 0.35),
+        0 2px 16px rgba(0, 0, 0, 0.95),
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+        1px 1px 0 rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.04em;
     }
 
     /* Nombre grande Kimberly en sec-bottom */
@@ -2062,77 +2065,48 @@
       height: 68px;
     }
 
-    /* ── PADRINOS – brillo leve y elegante ── */
+    /* ── PADRINOS – sin animaciones, solo destellos azules ── */
     #sec-padrinos {
       position: relative;
     }
 
     #sec-padrinos::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 50% 30%, rgba(201, 168, 76, 0.04) 0%, transparent 65%);
-      pointer-events: none;
-      z-index: 1;
-      animation: padrinosAurora 8s ease-in-out infinite;
-    }
-
-    @keyframes padrinosAurora {
-
-      0%,
-      100% {
-        opacity: 0.7;
-      }
-
-      50% {
-        opacity: 1;
-      }
+      content: none;
     }
 
     .padrinos-gold-glow {
-      box-shadow: 0 0 18px rgba(201, 168, 76, 0.35), 0 0 40px rgba(201, 168, 76, 0.12);
-      animation: goldLineGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes goldLineGlow {
-
-      0%,
-      100% {
-        box-shadow: 0 0 12px rgba(201, 168, 76, 0.25), 0 0 28px rgba(201, 168, 76, 0.08);
-        opacity: 0.8;
-      }
-
-      50% {
-        box-shadow: 0 0 22px rgba(201, 168, 76, 0.55), 0 0 50px rgba(201, 168, 76, 0.18);
-        opacity: 1;
-      }
+      box-shadow: 0 0 14px rgba(201, 168, 76, 0.28);
+      animation: none;
     }
 
     #sec-padrinos .padrinos-label {
       text-shadow:
-        0 0 30px rgba(201, 168, 76, 0.45),
-        0 0 60px rgba(201, 168, 76, 0.15),
+        0 0 25px rgba(201, 168, 76, 0.3),
         0 2px 16px rgba(0, 0, 0, 0.7);
-      animation: padrinosTitleGlow 5s ease-in-out infinite;
+      animation: none;
     }
 
-    @keyframes padrinosTitleGlow {
+    /* Destellos azules tipo estrella para padrinos */
+    .padrinos-star {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      background: rgba(120, 180, 255, 0.9);
+      box-shadow: 0 0 4px 2px rgba(100, 160, 255, 0.5);
+      animation: padrinosStar ease-in-out infinite;
+    }
+
+    @keyframes padrinosStar {
 
       0%,
       100% {
-        text-shadow:
-          0 0 25px rgba(201, 168, 76, 0.3),
-          0 0 50px rgba(201, 168, 76, 0.1),
-          0 2px 16px rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transform: scale(0.3);
       }
 
       50% {
-        text-shadow:
-          0 0 40px rgba(201, 168, 76, 0.6),
-          0 0 80px rgba(201, 168, 76, 0.22),
-          0 2px 16px rgba(0, 0, 0, 0.6);
+        opacity: 0.85;
+        transform: scale(1);
       }
     }
 
@@ -2883,6 +2857,14 @@
     .marca-logo:hover {
       opacity: 1;
     }
+
+    /* ── SEC MENSAJE ── */
+    #sec-mensaje {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 
@@ -2948,7 +2930,7 @@
           <p class="sec1-name-grande">Kimberly</p>
           <p class="sec1-invite">
             <em>Fernando Garc&#237;a</em> y <em>Mar&#237;a Guadalupe Castro</em>,<br>
-            est&#225;s invitado a celebrar mis XV A&#241;os
+            est&#225;s invitado a celebrar<br>mis XV A&#241;os
           </p>
           <div class="sec1-date-elegant">
             <div class="sec1-date-piece">
@@ -3344,6 +3326,8 @@
       <div class="bg"></div>
       <div class="overlay"></div>
       <div class="stars-layer"></div>
+      <div id="padrinos-blue-stars" style="position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden;">
+      </div>
       <div class="sparkle-container" id="sparkle-container-2"></div>
       <div class="inner reveal">
         <h2 class="padrinos-label">Padrinos de Honor</h2>
@@ -3356,6 +3340,34 @@
       </div>
     </section>
 
+
+
+    <!-- SEC 7B – DÉJAME UN MENSAJE -->
+    <section id="sec-mensaje" class="section">
+      <div class="bg" style="background-image:url('fondo2.jpg');"></div>
+      <div class="overlay"
+        style="background:linear-gradient(180deg,var(--navy) 0%,rgba(5,10,30,0.38) 10%,rgba(5,10,30,0.15) 30%,rgba(5,10,30,0.15) 70%,rgba(5,10,30,0.38) 90%,var(--navy) 100%);">
+      </div>
+      <div class="inner reveal"
+        style="max-width:540px;width:100%;text-align:center;position:relative;z-index:2;padding:3.5rem 2rem;">
+        <p class="sec-eyebrow">✦ Para Kimberly ✦</p>
+        <h2 class="sec-title">D&#233;jame un Mensaje</h2>
+        <div class="gold-line" style="margin-bottom:1.6rem;"></div>
+
+        <div class="form-group">
+          <label>Tu nombre</label>
+          <input type="text" id="msg-nombre" placeholder="¿Cómo te llamas?">
+        </div>
+        <div class="form-group">
+          <label>Tu mensaje para Kimberly</label>
+          <textarea id="msg-texto" rows="4" placeholder="Escribe algo bonito para este día especial..." style="min-height:110px;"></textarea>
+        </div>
+
+        <button class="btn-form" onclick="sendMensajeWhatsApp()" style="background:linear-gradient(135deg,#e8d5a3,#c9a84c,#e8d5a3);">
+          ✦ Enviar mensaje por WhatsApp ✦
+        </button>
+      </div>
+    </section>
 
     <!-- SEC 8 – ASISTENCIA -->
     <section id="sec-asistencia" class="section">
@@ -4078,6 +4090,40 @@
       }, { rootMargin: '100px 0px 100px 0px' });
       sections.forEach(s => obs.observe(s));
     })();
+
+    /* ── ESTRELLAS AZULES PADRINOS ── */
+    (function initPadrinosStars() {
+      const c = document.getElementById('padrinos-blue-stars');
+      if (!c) return;
+      const count = 32;
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('div');
+        s.className = 'padrinos-star';
+        const size = Math.random() * 2.4 + 0.8;
+        const dur  = (Math.random() * 3.5 + 2) + 's';
+        const delay = (Math.random() * 7) + 's';
+        s.style.cssText = `
+          left:${Math.random()*100}%;
+          top:${Math.random()*100}%;
+          width:${size}px;height:${size}px;
+          animation-duration:${dur};
+          animation-delay:${delay};
+        `;
+        c.appendChild(s);
+      }
+    })();
+
+    /* ── ENVIAR MENSAJE WHATSAPP ── */
+    function sendMensajeWhatsApp() {
+      const nombre  = (document.getElementById('msg-nombre').value || '').trim();
+      const mensaje = (document.getElementById('msg-texto').value  || '').trim();
+      if (!nombre || !mensaje) {
+        alert('Por favor escribe tu nombre y tu mensaje 💌');
+        return;
+      }
+      const texto = `💌 Mensaje para Kimberly 🌟\n\nDe: ${nombre}\n\n"${mensaje}"`;
+      window.open('https://wa.me/523236130020?text=' + encodeURIComponent(texto), '_blank');
+    }
 
   </script>
 </body>

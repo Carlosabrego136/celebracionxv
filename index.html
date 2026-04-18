@@ -446,21 +446,49 @@
       width: 100%;
     }
 
+    /* Título XV Años en sección bendición */
+    .sec1-xv-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      color: var(--gold-light);
+      line-height: 1.1;
+      text-shadow:
+        0 0 50px rgba(201, 168, 76, 0.7),
+        0 0 100px rgba(201, 168, 76, 0.3),
+        0 4px 24px rgba(0, 0, 0, 0.95);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.1rem;
+    }
+
     .sec1-blessing {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      color: var(--white);
-      line-height: 1.25;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2.8vw, 1.6rem);
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.6;
       font-weight: 400;
       font-style: italic;
       text-shadow:
-        0 0 60px rgba(201, 168, 76, 0.55),
-        0 2px 22px rgba(0, 0, 0, 0.95),
-        -1px -1px 0 rgba(0, 0, 0, 0.6),
-        1px -1px 0 rgba(0, 0, 0, 0.6),
-        -1px 1px 0 rgba(0, 0, 0, 0.6),
-        1px 1px 0 rgba(0, 0, 0, 0.6);
-      letter-spacing: 0.01em;
+        0 0 30px rgba(201, 168, 76, 0.35),
+        0 2px 16px rgba(0, 0, 0, 0.95),
+        -1px -1px 0 rgba(0, 0, 0, 0.5),
+        1px -1px 0 rgba(0, 0, 0, 0.5),
+        -1px 1px 0 rgba(0, 0, 0, 0.5),
+        1px 1px 0 rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.04em;
+    }
+
+    /* Nombre grande Kimberly en sec-bottom */
+    .sec1-name-grande {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.8rem, 11vw, 7.5rem);
+      color: var(--white);
+      line-height: 1.05;
+      text-shadow:
+        0 0 55px rgba(201, 168, 76, 0.65),
+        0 0 110px rgba(201, 168, 76, 0.25),
+        0 4px 28px rgba(0, 0, 0, 0.98);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.2rem;
     }
 
     .sec1-invite {
@@ -2833,6 +2861,28 @@
       letter-spacing: 0.35em;
       color: rgba(232, 213, 163, 0.6);
     }
+
+    /* ── MARCA INVITACIONES4YOU ── */
+    .marca-section {
+      background: var(--navy);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    .marca-logo {
+      width: clamp(200px, 55vw, 380px);
+      height: auto;
+      mix-blend-mode: screen;
+      opacity: 0.88;
+      filter: drop-shadow(0 0 18px rgba(150, 100, 255, 0.25));
+      transition: opacity 0.3s ease;
+    }
+
+    .marca-logo:hover {
+      opacity: 1;
+    }
   </style>
 </head>
 
@@ -2889,11 +2939,13 @@
 
         <!-- solo bendición arriba sobre la foto -->
         <div class="sec1-top">
+          <p class="sec1-xv-title">Mis XV Años</p>
           <p class="sec1-blessing">Con la Bendici&#243;n de Dios<br>y de mis Padres</p>
         </div>
 
         <!-- invitación + fecha abajo, en zona oscura -->
         <div class="sec1-bottom">
+          <p class="sec1-name-grande">Kimberly</p>
           <p class="sec1-invite">
             <em>Fernando Garc&#237;a</em> y <em>Mar&#237;a Guadalupe Castro</em>,<br>
             est&#225;s invitado a celebrar mis XV A&#241;os
@@ -3500,6 +3552,11 @@
       </div>
     </section>
 
+  </div>
+
+  <!-- MARCA INVITACIONES4YOU -->
+  <div class="marca-section">
+    <img src="marca.png" alt="Invitaciones4You" class="marca-logo">
   </div>
 
   <footer>

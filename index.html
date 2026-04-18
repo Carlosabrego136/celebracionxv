@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a1628">
   <title>XV Años – Kimberly García Castro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600&display=swap"
     rel="stylesheet">
@@ -1104,6 +1106,8 @@
       pointer-events: none;
       z-index: 4;
       overflow: hidden;
+      will-change: contents;
+      contain: strict;
     }
 
     .butterfly {
@@ -1400,6 +1404,7 @@
       pointer-events: none;
       z-index: 5;
       overflow: hidden;
+      contain: strict;
     }
 
     .sparkle {
@@ -2627,6 +2632,24 @@
       opacity: 0.95;
     }
 
+    /* ── PERFORMANCE: móvil – desactivar backdrop-filter y reducir aurora ── */
+    @media (max-width: 768px) {
+
+      .btn-entrar,
+      .cd-num,
+      .btn-calendario,
+      .btn-mapa,
+      .btn-form,
+      .tl-icon-wrap {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      .aurora-band {
+        display: none;
+      }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
@@ -3566,13 +3589,14 @@
 
     /* BUTTERFLIES */
     function createButterfly(container) {
+      if (container.children.length >= 5) return; /* máximo 5 activas */
       const b = document.createElement('div');
       b.className = 'butterfly';
       const size = Math.random() * 16 + 14;
       const tx = (Math.random() - 0.5) * 280 + 'px';
       const ty = -(Math.random() * 260 + 80) + 'px';
       const dur = (Math.random() * 8 + 6) + 's';
-      const delay = (Math.random() * 9) + 's';
+      const delay = (Math.random() * 5) + 's'; /* reducido de 9s a 5s */
       b.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;--tx:${tx};--ty:${ty};animation-duration:${dur};animation-delay:${delay};`;
       const hue = Math.floor(Math.random() * 40 + 200);
       b.innerHTML = `<svg viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg"><ellipse cx="10" cy="12" rx="10" ry="7" fill="hsl(${hue},78%,65%)" opacity="0.8"/><ellipse cx="30" cy="12" rx="10" ry="7" fill="hsl(${hue},78%,65%)" opacity="0.8"/><ellipse cx="10" cy="20" rx="7" ry="5" fill="hsl(${hue},68%,55%)" opacity="0.7"/><ellipse cx="30" cy="20" rx="7" ry="5" fill="hsl(${hue},68%,55%)" opacity="0.7"/><line x1="20" y1="5" x2="20" y2="25" stroke="hsl(${hue},38%,28%)" stroke-width="1.5"/></svg>`;
@@ -3580,20 +3604,24 @@
       setTimeout(() => b.remove(), (parseFloat(dur) + parseFloat(delay)) * 1000 + 1000);
     }
 
+    /* Registro global de intervalos para pausarlos con Page Visibility */
+    const _intervals = [];
+
     function spawnButterflies(id) {
       const c = document.getElementById(id);
       if (!c) return;
-      setInterval(() => createButterfly(c), 1300);
+      _intervals.push(setInterval(() => createButterfly(c), 2200)); /* 1300→2200ms */
     }
     spawnButterflies('butterfly-container-1');
     spawnButterflies('butterfly-container-2');
 
     /* SPARKLES */
     function createSparkle(container) {
+      if (container.children.length >= 8) return; /* máximo 8 activas */
       const s = document.createElement('div');
       s.className = 'sparkle';
       const dur = (Math.random() * 2 + 1.5) + 's';
-      const delay = (Math.random() * 4) + 's';
+      const delay = (Math.random() * 3) + 's'; /* reducido de 4s a 3s */
       s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${dur};animation-delay:${delay};`;
       container.appendChild(s);
       setTimeout(() => s.remove(), (parseFloat(dur) + parseFloat(delay)) * 1000 + 500);
@@ -3602,7 +3630,7 @@
     function spawnSparkles(id) {
       const c = document.getElementById(id);
       if (!c) return;
-      setInterval(() => { createSparkle(c); createSparkle(c); }, 650);
+      _intervals.push(setInterval(() => { createSparkle(c); }, 1100)); /* 650ms×2→1100ms×1 */
     }
     spawnSparkles('sparkle-container-1');
     spawnSparkles('sparkle-container-2');
@@ -3842,16 +3870,17 @@
       }
     })();
 
-    /* XV PARTÍCULAS */
+    /* XV PARTÍCULAS – optimizado: límite de nodos y menor frecuencia */
     (function initXvParticles() {
       const overlay = document.getElementById('xv-overlay');
       if (!overlay) return;
       function spawnParticle() {
+        if (overlay.children.length >= 10) return; /* límite 10 activas */
         const p = document.createElement('div');
         p.className = 'xv-particle';
         const size = Math.random() * 3 + 1.2;
         const dur = (Math.random() * 3 + 2.5) + 's';
-        const delay = (Math.random() * 4) + 's';
+        const delay = (Math.random() * 3) + 's'; /* reducido de 4s a 3s */
         p.style.cssText = `
           left:${Math.random()*90+5}%;
           top:${Math.random()*60+20}%;
@@ -3863,8 +3892,9 @@
         overlay.appendChild(p);
         setTimeout(() => p.remove(), (parseFloat(dur) + parseFloat(delay)) * 1000 + 500);
       }
-      setInterval(spawnParticle, 600);
+      _intervals.push(setInterval(spawnParticle, 1000)); /* 600→1000ms */
     })();
+
       (function animarPortada() {
       const nameEl = document.getElementById('portada-name-el');
       const dividerEl = document.getElementById('portada-divider-el');
@@ -3889,21 +3919,20 @@
           });
           })();
 
-    /* MARIPOSAS DEL SOBRE – leves, azul brillante, sin cuadro */
+    /* MARIPOSAS DEL SOBRE – optimizado: límite estricto e intervalo mayor */
     (function initEnvButterflies() {
       const c = document.getElementById('env-butterflies');
       if (!c) return;
 
       function spawnEnvButterfly() {
+        if (c.children.length >= 4) return; /* reducido de 6 a 4 */
         const b = document.createElement('div');
-        const size = Math.random() * 12 + 8;          // 8–20px, pequeñitas
-        const hue  = Math.floor(Math.random() * 30 + 195); // azul 195–225
+        const size = Math.random() * 12 + 8;
+        const hue  = Math.floor(Math.random() * 30 + 195);
         const sat  = Math.floor(Math.random() * 20 + 75);
         const lit  = Math.floor(Math.random() * 15 + 65);
-        // posición aleatoria dentro del contenedor ampliado
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
-        // dirección de vuelo
         const tx = (Math.random() - 0.5) * 180 + 'px';
         const ty = -(Math.random() * 140 + 40) + 'px';
         const dur = (Math.random() * 5 + 5) + 's';
@@ -3918,7 +3947,6 @@
           pointer-events:none;
           opacity:0;
         `;
-        // alas con SVG inline, sin fondo, sin borde
         b.innerHTML = `<svg viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;overflow:visible;">
           <ellipse cx="10" cy="11" rx="11" ry="7"  fill="hsla(${hue},${sat}%,${lit}%,0.55)"/>
           <ellipse cx="30" cy="11" rx="11" ry="7"  fill="hsla(${hue},${sat}%,${lit}%,0.55)"/>
@@ -3931,7 +3959,6 @@
         setTimeout(() => { if (b.parentNode) b.remove(); }, totalMs);
       }
 
-      // Añadir keyframes al head si no existen
       if (!document.getElementById('env-bf-style')) {
         const st = document.createElement('style');
         st.id = 'env-bf-style';
@@ -3948,13 +3975,51 @@
         document.head.appendChild(st);
       }
 
-      // Generar mariposas cada 1.4 segundos, máximo 6 vivas a la vez
-      setInterval(() => {
-        if (c.children.length < 6) spawnEnvButterfly();
-      }, 1400);
+      _intervals.push(setInterval(() => spawnEnvButterfly(), 2000)); /* 1400→2000ms */
+      [0, 800, 1600].forEach(d => setTimeout(spawnEnvButterfly, d));
+    })();
 
-      // Sembrar 3 iniciales con delay escalonado
-      [0, 600, 1200].forEach(d => setTimeout(spawnEnvButterfly, d));
+    /* ── PAGE VISIBILITY API – pausa todos los intervalos si la pestaña no es visible ── */
+    (function initVisibilityPause() {
+      const ids = _intervals.slice(); /* copia del array al momento de ejecutar */
+      const frozen = [];
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          /* Guardar y limpiar todos los intervalos activos */
+          ids.forEach(id => {
+            clearInterval(id);
+            frozen.push(id);
+          });
+          ids.length = 0;
+        } else {
+          /* La página volvió a ser visible — reactivar spawners */
+          const c1 = document.getElementById('butterfly-container-1');
+          const c2 = document.getElementById('butterfly-container-2');
+          if (c1) ids.push(setInterval(() => createButterfly(c1), 2200));
+          if (c2) ids.push(setInterval(() => createButterfly(c2), 2200));
+
+          ['sparkle-container-1','sparkle-container-2','sparkle-container-3','sparkle-container-4'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) ids.push(setInterval(() => createSparkle(el), 1100));
+          });
+        }
+      });
+    })();
+
+    /* ── PAUSAR ANIMACIONES CSS DE SECCIONES FUERA DE PANTALLA ── */
+    (function initSectionPause() {
+      const sections = document.querySelectorAll('.section');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          /* Pausa/reanuda animaciones CSS de elementos hijos */
+          const animated = e.target.querySelectorAll('.butterfly, .sparkle, .aurora-band, .star-twinkle, .xv-particle');
+          animated.forEach(el => {
+            el.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+          });
+        });
+      }, { rootMargin: '100px 0px 100px 0px' });
+      sections.forEach(s => obs.observe(s));
     })();
 
   </script>

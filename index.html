@@ -3200,7 +3200,7 @@
             </div>
             <div class="location-text">
               <p class="location-type">&#10022; Ceremonia Religiosa &#10022;</p>
-              <p class="location-time-big">2:00 pm</p>
+              <p class="location-time-big">12:30 pm</p>
               <h3 class="location-venue">Santa Helena</h3>
               <p class="location-addr">8912 S Gate Ave &nbsp;·&nbsp; South Gate, CA 90280</p>
               <a class="btn-mapa" href="https://maps.google.com/?q=8912+S+Gate+Ave,+South+Gate,+CA+90280"
@@ -3292,7 +3292,7 @@
           <!-- 1: Ceremonia -->
           <div class="tl-item" data-tl-index="0">
             <div class="tl-dot"></div>
-            <p class="tl-time">2:00 PM</p>
+            <p class="tl-time">12:30 PM</p>
             <div class="tl-icon-wrap">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24 6 L24 10 M20 10 L28 10" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round" />
@@ -3656,14 +3656,16 @@
       startAudio();
       const portada = document.getElementById('portada');
       const main = document.getElementById('main-content');
+      /* Mostrar main-content ANTES del fade para que no haya hueco azul */
+      main.classList.add('visible');
+      document.body.classList.remove('portada-active');
+      window.scrollTo(0, 0);
+      initReveal();
+      /* Fade out portada encima del main ya visible */
       portada.classList.add('hidden');
       setTimeout(() => {
         portada.style.display = 'none';
-        main.classList.add('visible');
-        document.body.classList.remove('portada-active');
-        window.scrollTo(0, 0);
-        initReveal();
-      }, 920);
+      }, 950);
     }
 
     /* AUDIO */
